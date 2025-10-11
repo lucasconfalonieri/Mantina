@@ -1,0 +1,515 @@
+TypeError: rows.get is not a function
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:69)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16)
+    at Query.Sequence.end (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)
+    at Protocol._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:43:10)
+    at Protocol.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+ReferenceError: name is not defined
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:24)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16)
+    at Query.Sequence.end (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)
+    at Protocol._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:43:10)
+    at Protocol.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+ReferenceError: name is not defined
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:24)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16)
+    at Query.Sequence.end (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)
+    at Protocol._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:43:10)
+    at Protocol.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+TypeError [ERR_INVALID_ARG_TYPE]: The "chunk" argument must be of type string or an instance of Buffer. Received an instance of Object
+    at ServerResponse.end (_http_outgoing.js:762:13)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:15)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16)
+    at Query.Sequence.end (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)
+    at Protocol._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:43:10) {
+  code: 'ERR_INVALID_ARG_TYPE'
+}
+Mon, 10 Aug 2020 09:59:18 GMT express deprecated res.json(status, obj): Use res.status(status).json(obj) instead at routes/subtopics.js:43:15
+RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: [ [RowDataPacket], [RowDataPacket], [RowDataPacket] ]
+    at ServerResponse.writeHead (_http_server.js:249:11)
+    at ServerResponse.writeHead (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/on-headers/index.js:44:26)
+    at ServerResponse._implicitHeader (_http_server.js:240:8)
+    at write_ (_http_outgoing.js:663:9)
+    at ServerResponse.end (_http_outgoing.js:776:5)
+    at ServerResponse.send (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/express/lib/response.js:221:10)
+    at ServerResponse.json (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/express/lib/response.js:267:15)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:15)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16) {
+  code: 'ERR_HTTP_INVALID_STATUS_CODE'
+}
+TypeError [ERR_INVALID_ARG_TYPE]: The "chunk" argument must be of type string or an instance of Buffer. Received an instance of Array
+    at ServerResponse.end (_http_outgoing.js:762:13)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:15)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16)
+    at Query.Sequence.end (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)
+    at Protocol._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:43:10) {
+  code: 'ERR_INVALID_ARG_TYPE'
+}
+Mon, 10 Aug 2020 10:13:35 GMT express deprecated res.json(status, obj): Use res.status(status).json(obj) instead at routes/subtopics.js:43:15
+RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: { subtopics: [Array] }
+    at ServerResponse.writeHead (_http_server.js:249:11)
+    at ServerResponse.writeHead (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/on-headers/index.js:44:26)
+    at ServerResponse._implicitHeader (_http_server.js:240:8)
+    at write_ (_http_outgoing.js:663:9)
+    at ServerResponse.end (_http_outgoing.js:776:5)
+    at ServerResponse.send (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/express/lib/response.js:221:10)
+    at ServerResponse.json (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/express/lib/response.js:267:15)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:15)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16) {
+  code: 'ERR_HTTP_INVALID_STATUS_CODE'
+}
+Mon, 10 Aug 2020 10:13:53 GMT express deprecated res.json(status, obj): Use res.status(status).json(obj) instead at routes/subtopics.js:43:15
+RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: { subtopics: [Array] }
+    at ServerResponse.writeHead (_http_server.js:249:11)
+    at ServerResponse.writeHead (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/on-headers/index.js:44:26)
+    at ServerResponse._implicitHeader (_http_server.js:240:8)
+    at write_ (_http_outgoing.js:663:9)
+    at ServerResponse.end (_http_outgoing.js:776:5)
+    at ServerResponse.send (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/express/lib/response.js:221:10)
+    at ServerResponse.json (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/express/lib/response.js:267:15)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:15)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16) {
+  code: 'ERR_HTTP_INVALID_STATUS_CODE'
+}
+Mon, 10 Aug 2020 10:13:53 GMT express deprecated res.json(status, obj): Use res.status(status).json(obj) instead at routes/subtopics.js:43:15
+RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: { subtopics: [Array] }
+    at ServerResponse.writeHead (_http_server.js:249:11)
+    at ServerResponse.writeHead (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/on-headers/index.js:44:26)
+    at ServerResponse._implicitHeader (_http_server.js:240:8)
+    at write_ (_http_outgoing.js:663:9)
+    at ServerResponse.end (_http_outgoing.js:776:5)
+    at ServerResponse.send (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/express/lib/response.js:221:10)
+    at ServerResponse.json (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/express/lib/response.js:267:15)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:15)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16) {
+  code: 'ERR_HTTP_INVALID_STATUS_CODE'
+}
+Mon, 10 Aug 2020 10:13:54 GMT express deprecated res.json(status, obj): Use res.status(status).json(obj) instead at routes/subtopics.js:43:15
+RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: { subtopics: [Array] }
+    at ServerResponse.writeHead (_http_server.js:249:11)
+    at ServerResponse.writeHead (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/on-headers/index.js:44:26)
+    at ServerResponse._implicitHeader (_http_server.js:240:8)
+    at write_ (_http_outgoing.js:663:9)
+    at ServerResponse.end (_http_outgoing.js:776:5)
+    at ServerResponse.send (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/express/lib/response.js:221:10)
+    at ServerResponse.json (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/express/lib/response.js:267:15)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:15)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16) {
+  code: 'ERR_HTTP_INVALID_STATUS_CODE'
+}
+Mon, 10 Aug 2020 10:13:54 GMT express deprecated res.json(status, obj): Use res.status(status).json(obj) instead at routes/subtopics.js:43:15
+RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: { subtopics: [Array] }
+    at ServerResponse.writeHead (_http_server.js:249:11)
+    at ServerResponse.writeHead (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/on-headers/index.js:44:26)
+    at ServerResponse._implicitHeader (_http_server.js:240:8)
+    at write_ (_http_outgoing.js:663:9)
+    at ServerResponse.end (_http_outgoing.js:776:5)
+    at ServerResponse.send (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/express/lib/response.js:221:10)
+    at ServerResponse.json (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/express/lib/response.js:267:15)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:15)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16) {
+  code: 'ERR_HTTP_INVALID_STATUS_CODE'
+}
+/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43
+          res.send({ subtopics: response, rows[0].name});
+                                              ^
+
+SyntaxError: Unexpected token '['
+    at wrapSafe (internal/modules/cjs/loader.js:1172:16)
+    at Module._compile (internal/modules/cjs/loader.js:1220:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+    at Module.require (internal/modules/cjs/loader.js:1145:19)
+    at Module.Hook._require.Module.require (/usr/local/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:80:39)
+    at require (internal/modules/cjs/helpers.js:75:18)
+    at Object.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/app.js:11:23)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43
+          res.send({ subtopics: response, rows[0].name});
+                                              ^
+
+SyntaxError: Unexpected token '['
+    at wrapSafe (internal/modules/cjs/loader.js:1172:16)
+    at Module._compile (internal/modules/cjs/loader.js:1220:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+    at Module.require (internal/modules/cjs/loader.js:1145:19)
+    at Module.Hook._require.Module.require (/usr/local/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:80:39)
+    at require (internal/modules/cjs/helpers.js:75:18)
+    at Object.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/app.js:11:23)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43
+          res.send({ subtopics: response, rows[0].name});
+                                              ^
+
+SyntaxError: Unexpected token '['
+    at wrapSafe (internal/modules/cjs/loader.js:1172:16)
+    at Module._compile (internal/modules/cjs/loader.js:1220:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+    at Module.require (internal/modules/cjs/loader.js:1145:19)
+    at Module.Hook._require.Module.require (/usr/local/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:80:39)
+    at require (internal/modules/cjs/helpers.js:75:18)
+    at Object.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/app.js:11:23)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43
+          res.send({ subtopics: response, rows[0].name});
+                                              ^
+
+SyntaxError: Unexpected token '['
+    at wrapSafe (internal/modules/cjs/loader.js:1172:16)
+    at Module._compile (internal/modules/cjs/loader.js:1220:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+    at Module.require (internal/modules/cjs/loader.js:1145:19)
+    at Module.Hook._require.Module.require (/usr/local/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:80:39)
+    at require (internal/modules/cjs/helpers.js:75:18)
+    at Object.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/app.js:11:23)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43
+          res.send({ subtopics: response, rows[0].name});
+                                              ^
+
+SyntaxError: Unexpected token '['
+    at wrapSafe (internal/modules/cjs/loader.js:1172:16)
+    at Module._compile (internal/modules/cjs/loader.js:1220:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+    at Module.require (internal/modules/cjs/loader.js:1145:19)
+    at Module.Hook._require.Module.require (/usr/local/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:80:39)
+    at require (internal/modules/cjs/helpers.js:75:18)
+    at Object.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/app.js:11:23)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43
+          res.send({ subtopics: response, rows[0].name});
+                                              ^
+
+SyntaxError: Unexpected token '['
+    at wrapSafe (internal/modules/cjs/loader.js:1172:16)
+    at Module._compile (internal/modules/cjs/loader.js:1220:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+    at Module.require (internal/modules/cjs/loader.js:1145:19)
+    at Module.Hook._require.Module.require (/usr/local/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:80:39)
+    at require (internal/modules/cjs/helpers.js:75:18)
+    at Object.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/app.js:11:23)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43
+          res.send({ subtopics: response, rows[0].name});
+                                              ^
+
+SyntaxError: Unexpected token '['
+    at wrapSafe (internal/modules/cjs/loader.js:1172:16)
+    at Module._compile (internal/modules/cjs/loader.js:1220:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+    at Module.require (internal/modules/cjs/loader.js:1145:19)
+    at Module.Hook._require.Module.require (/usr/local/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:80:39)
+    at require (internal/modules/cjs/helpers.js:75:18)
+    at Object.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/app.js:11:23)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43
+          res.send({ subtopics: response, rows[0].name});
+                                              ^
+
+SyntaxError: Unexpected token '['
+    at wrapSafe (internal/modules/cjs/loader.js:1172:16)
+    at Module._compile (internal/modules/cjs/loader.js:1220:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+    at Module.require (internal/modules/cjs/loader.js:1145:19)
+    at Module.Hook._require.Module.require (/usr/local/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:80:39)
+    at require (internal/modules/cjs/helpers.js:75:18)
+    at Object.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/app.js:11:23)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43
+          res.send({ subtopics: response, rows[0].name});
+                                              ^
+
+SyntaxError: Unexpected token '['
+    at wrapSafe (internal/modules/cjs/loader.js:1172:16)
+    at Module._compile (internal/modules/cjs/loader.js:1220:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+    at Module.require (internal/modules/cjs/loader.js:1145:19)
+    at Module.Hook._require.Module.require (/usr/local/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:80:39)
+    at require (internal/modules/cjs/helpers.js:75:18)
+    at Object.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/app.js:11:23)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43
+          res.send({ subtopics: response, rows[0].name});
+                                              ^
+
+SyntaxError: Unexpected token '['
+    at wrapSafe (internal/modules/cjs/loader.js:1172:16)
+    at Module._compile (internal/modules/cjs/loader.js:1220:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+    at Module.require (internal/modules/cjs/loader.js:1145:19)
+    at Module.Hook._require.Module.require (/usr/local/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:80:39)
+    at require (internal/modules/cjs/helpers.js:75:18)
+    at Object.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/app.js:11:23)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43
+          res.send({ subtopics: response, rows[0].name});
+                                              ^
+
+SyntaxError: Unexpected token '['
+    at wrapSafe (internal/modules/cjs/loader.js:1172:16)
+    at Module._compile (internal/modules/cjs/loader.js:1220:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+    at Module.require (internal/modules/cjs/loader.js:1145:19)
+    at Module.Hook._require.Module.require (/usr/local/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:80:39)
+    at require (internal/modules/cjs/helpers.js:75:18)
+    at Object.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/app.js:11:23)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43
+          res.send({ subtopics: response, rows[0].name});
+                                              ^
+
+SyntaxError: Unexpected token '['
+    at wrapSafe (internal/modules/cjs/loader.js:1172:16)
+    at Module._compile (internal/modules/cjs/loader.js:1220:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+    at Module.require (internal/modules/cjs/loader.js:1145:19)
+    at Module.Hook._require.Module.require (/usr/local/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:80:39)
+    at require (internal/modules/cjs/helpers.js:75:18)
+    at Object.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/app.js:11:23)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43
+          res.send({ subtopics: response, rows[0].name});
+                                              ^
+
+SyntaxError: Unexpected token '['
+    at wrapSafe (internal/modules/cjs/loader.js:1172:16)
+    at Module._compile (internal/modules/cjs/loader.js:1220:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+    at Module.require (internal/modules/cjs/loader.js:1145:19)
+    at Module.Hook._require.Module.require (/usr/local/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:80:39)
+    at require (internal/modules/cjs/helpers.js:75:18)
+    at Object.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/app.js:11:23)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43
+          res.send({ subtopics: response, rows[0].name});
+                                              ^
+
+SyntaxError: Unexpected token '['
+    at wrapSafe (internal/modules/cjs/loader.js:1172:16)
+    at Module._compile (internal/modules/cjs/loader.js:1220:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+    at Module.require (internal/modules/cjs/loader.js:1145:19)
+    at Module.Hook._require.Module.require (/usr/local/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:80:39)
+    at require (internal/modules/cjs/helpers.js:75:18)
+    at Object.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/app.js:11:23)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43
+          res.send({ subtopics: response, rows[0].name});
+                                              ^
+
+SyntaxError: Unexpected token '['
+    at wrapSafe (internal/modules/cjs/loader.js:1172:16)
+    at Module._compile (internal/modules/cjs/loader.js:1220:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+    at Module.require (internal/modules/cjs/loader.js:1145:19)
+    at Module.Hook._require.Module.require (/usr/local/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:80:39)
+    at require (internal/modules/cjs/helpers.js:75:18)
+    at Object.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/app.js:11:23)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43
+          res.send({ subtopics: response, rows[0].name});
+                                              ^
+
+SyntaxError: Unexpected token '['
+    at wrapSafe (internal/modules/cjs/loader.js:1172:16)
+    at Module._compile (internal/modules/cjs/loader.js:1220:27)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+    at Module.require (internal/modules/cjs/loader.js:1145:19)
+    at Module.Hook._require.Module.require (/usr/local/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:80:39)
+    at require (internal/modules/cjs/helpers.js:75:18)
+    at Object.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/app.js:11:23)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+ReferenceError: result is not defined
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:32)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16)
+    at Query.Sequence.end (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)
+    at Protocol._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:43:10)
+    at Protocol.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+ReferenceError: result is not defined
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:32)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16)
+    at Query.Sequence.end (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)
+    at Protocol._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:43:10)
+    at Protocol.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+ReferenceError: result is not defined
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:32)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16)
+    at Query.Sequence.end (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)
+    at Protocol._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:43:10)
+    at Protocol.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+ReferenceError: result is not defined
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:32)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16)
+    at Query.Sequence.end (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)
+    at Protocol._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:43:10)
+    at Protocol.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+ReferenceError: result is not defined
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:32)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16)
+    at Query.Sequence.end (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)
+    at Protocol._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:43:10)
+    at Protocol.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+ReferenceError: result is not defined
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:32)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16)
+    at Query.Sequence.end (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)
+    at Protocol._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:43:10)
+    at Protocol.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+ReferenceError: result is not defined
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:32)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16)
+    at Query.Sequence.end (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)
+    at Protocol._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:43:10)
+    at Protocol.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+ReferenceError: result is not defined
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:32)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16)
+    at Query.Sequence.end (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)
+    at Protocol._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:43:10)
+    at Protocol.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+ReferenceError: result is not defined
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:32)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16)
+    at Query.Sequence.end (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)
+    at Protocol._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:43:10)
+    at Protocol.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+ReferenceError: result is not defined
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:32)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16)
+    at Query.Sequence.end (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)
+    at Protocol._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:43:10)
+    at Protocol.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+ReferenceError: result is not defined
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:32)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16)
+    at Query.Sequence.end (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)
+    at Protocol._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:43:10)
+    at Protocol.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+ReferenceError: result is not defined
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/routes/subtopics.js:43:32)
+    at Query.<anonymous> (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:526:10)
+    at Query._callback (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/Connection.js:488:16)
+    at Query.Sequence.end (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Query._handleFinalResultPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:149:8)
+    at Query.EofPacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/sequences/Query.js:133:8)
+    at Protocol._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+    at Parser._parsePacket (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:433:10)
+    at Parser.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Parser.js:43:10)
+    at Protocol.write (/Users/juan.godoy/IdeaProjects/mantina_back/node_modules/mysql/lib/protocol/Protocol.js:38:16)

@@ -1,0 +1,16 @@
+# root
+.DS_Store
+.env
+.env.*
+*.log
+
+# node
+node_modules/
+dist/
+build/
+coverage/
+.npmrc
+
+# editor/OS
+.vscode/
+.idea/
