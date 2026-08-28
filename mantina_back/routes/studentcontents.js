@@ -7,7 +7,7 @@ const upload = require('../utils/storage');
 
 
 router.get('/:idStudentTopic/:user', ensureToken, function (req, res, next) {
-  jwt.verify(req.token, 'my_secret_key', (err, data) => {
+  jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
     if (err) {
       res.status(409).json({
         status: 'error',
@@ -70,7 +70,7 @@ router.get('/:idStudentTopic/:user', ensureToken, function (req, res, next) {
 
 /** Devuelve todos los usuarios que tienen permiso para ver el topico */
 router.get('/:idStudentTopic', ensureToken, function (req, res, next) {
-  jwt.verify(req.token, 'my_secret_key', (err, data) => {
+  jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
     if (err) {
       res.status(409).json({
         status: 'error',
@@ -108,7 +108,7 @@ router.get('/:idStudentTopic', ensureToken, function (req, res, next) {
 });
 
 router.get('/:idStudentContent/privileges/:idStudentTopic', ensureToken, function (req, res, next) {
-  jwt.verify(req.token, 'my_secret_key', (err, data) => {
+  jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
     if (err) {
       res.status(409).json({
         status: 'error',
@@ -181,7 +181,7 @@ router.get('/:idStudentContent/privileges/:idStudentTopic', ensureToken, functio
 });
 
 router.post('/', ensureToken, upload.single('pdf'), function (req, res, next) {
-  jwt.verify(req.token, 'my_secret_key', (err, data) => {
+  jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
     if (err) {
       res.status(409).json({
         status: 'error',
@@ -246,7 +246,7 @@ router.post('/', ensureToken, upload.single('pdf'), function (req, res, next) {
 });
 
 router.put('/pdf/:idStudentContent', ensureToken, upload.single('pdf'), function (req, res, next) {
-  jwt.verify(req.token, 'my_secret_key', (err, data) => {
+  jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
     if (err) {
       res.status(409).json({
         status: 'error',
@@ -275,7 +275,7 @@ router.put('/pdf/:idStudentContent', ensureToken, upload.single('pdf'), function
 });
 
 router.put('/textpdfusers/:idStudentContent', ensureToken, function (req, res, next) {
-  jwt.verify(req.token, 'my_secret_key', (err, data) => {
+  jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
     if (err) {
       res.status(409).json({
         status: 'error',
@@ -338,7 +338,7 @@ router.put('/textpdfusers/:idStudentContent', ensureToken, function (req, res, n
 });
 
 router.delete('/:idStudentcontent/:orderContent/:idStudentTopic', ensureToken, function (req, res, next) {
-  jwt.verify(req.token, 'my_secret_key', (err, data) => {
+  jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
     if (err) {
       res.status(409).json({
         status: 'error',
@@ -406,7 +406,7 @@ router.delete('/:idStudentcontent/:orderContent/:idStudentTopic', ensureToken, f
 });
 
 router.put('/allcontents/changeorder', ensureToken, function (req, res, next) {
-  jwt.verify(req.token, 'my_secret_key', (err, data) => {
+  jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
       if (err) {
           res.status(409).json({
               status: 'error',

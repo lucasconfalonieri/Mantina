@@ -1,36 +1,9 @@
 module.exports = {
-
-
   database: {
-    connectionLimit: 100,
-    host: 'localhost' , 
-    user: 'root' , 
-     password: 'lobo' , 
-     database: 'mantina'
+    connectionLimit: Number(process.env.DB_CONNECTION_LIMIT) || 100,
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
   }
-  /*
-  local
-      database: {
-          connectionLimit: 100,
-          host: 'localhost' , 
-          user: 'root' , 
-           password: 'lobo' , 
-           database: 'mantina' 
-      }
-      
-      server
-      database: {
-    connectionLimit: 100,
-    host: '190.61.250.130' , 
-    user: 'mickyni1' , 
-    password: 'mvwSKrscAv' , 
-    database: 'mickyni1_mantina'
-  }
-  
-    };*/
-  
-  
-  
-  
-  };
-  
+};

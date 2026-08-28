@@ -8,7 +8,7 @@ const { ensureToken, validate} = require('../core/auth');
 
 router.post('/signup', passport.authenticate('local.signup', {}), function (req, res) {
   const userId = { id: res.id_user };
-  const token = jwt.sign({ userId }, 'my_secret_key', {
+  const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
     expiresIn: 60 * 60
   });
   res.json({ auth: { token } });
@@ -18,7 +18,7 @@ router.post('/signin',
   passport.authenticate('local.signin', {}),
   function (req, res) {
     const userId = { id: req.session.passport.user.id_user };
-    const token = jwt.sign({ userId }, 'my_secret_key', {
+    const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
       expiresIn: 60 * 60
     });
     res.json({ auth: { token } });
@@ -34,7 +34,7 @@ router.post('/signina',
   function (req, res) {
     const userId = { id: req.session.passport.user.id_user };
     if (userId.id == 19 || userId.id ==20) {
-      const token = jwt.sign({ userId }, 'my_secret_key', {
+      const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
         expiresIn: 60 * 60
       });
       res.json({
@@ -62,7 +62,7 @@ router.get('/forgotpassword/:user', function (req, res, next) {
     } else {
       if (result.length == 1) {
 
-        const token = jwt.sign({ user }, 'my_secret_key', {
+        const token = jwt.sign({ user }, process.env.JWT_SECRET, {
           expiresIn: 60 * 60
         });
 
@@ -99,7 +99,7 @@ router.get('/forgotpassword/:user', function (req, res, next) {
 router.put('/forgotpassword', ensureToken, validate, passport.authenticate('local.updatepassword', {}),
 function (req, res) {
   const userId = { id: res.id_user };
-  const token = jwt.sign({ userId }, 'my_secret_key', {
+  const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
     expiresIn: 60 * 60
   });
   res.json({ auth: { token } });

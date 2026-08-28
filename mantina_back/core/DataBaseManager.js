@@ -1,19 +1,6 @@
 var mysql = require('mysql');
+const { database } = require('../keys');
 
-var configLocal = {
-  host: 'localhost' , 
-    	user: 'root' , 
-    	password: 'lobo' , 
-    	database: 'mantina'
-  };
+const pool = mysql.createPool(database);
 
-	var configServer = {
-          host: '190.61.250.130' , 
-    user: 'mickyni1' , 
-    password: 'mvwSKrscAv' , 
-    database: 'mickyni1_mantina'
-    }
-  
-  const pool = mysql.createPool(configServer);
-  
-  module.exports = pool;
+module.exports = pool;

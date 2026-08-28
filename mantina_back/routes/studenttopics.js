@@ -5,7 +5,7 @@ var jwt = require('jsonwebtoken');
 const { ensureToken } = require('../core/auth');
 
 router.get('/:user', ensureToken, function (req, res, next) {
-    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
         if (err) {
             res.status(409).json({
                 status: 'error',
@@ -54,7 +54,7 @@ router.get('/:user', ensureToken, function (req, res, next) {
 });
 
 router.get('/all/topics', ensureToken, function (req, res, next) {
-    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
         if (err) {
             res.status(409).json({
                 status: 'error',
@@ -82,7 +82,7 @@ router.get('/all/topics', ensureToken, function (req, res, next) {
 });
 
 router.get('/:topic/topic', ensureToken, function (req, res, next) {
-    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
         if (err) {
             res.status(409).json({
                 status: 'error',
@@ -153,7 +153,7 @@ router.get('/:topic/topic', ensureToken, function (req, res, next) {
 });
 
 router.get('/edit/:topic', ensureToken, function (req, res, next) {
-    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
         if (err) {
             res.status(409).json({
                 status: 'error',
@@ -226,7 +226,7 @@ router.get('/edit/:topic', ensureToken, function (req, res, next) {
 });
 
 router.post('/', ensureToken, function (req, res, next) {
-    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
         if (err) {
             res.status(409).json({
                 status: 'error',
@@ -288,7 +288,7 @@ router.post('/', ensureToken, function (req, res, next) {
 });
 
 router.delete('/:idTopic/:orderTopic', ensureToken, function (req, res, next) {
-    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
         if (err) {
             res.status(409).json({
                 status: 'error',
@@ -360,7 +360,7 @@ router.delete('/:idTopic/:orderTopic', ensureToken, function (req, res, next) {
 });
 
 router.put('/:idTopic', ensureToken, function (req, res, next) {
-    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
         if (err) {
             res.status(409).json({
                 status: 'error',
@@ -384,10 +384,10 @@ router.put('/:idTopic', ensureToken, function (req, res, next) {
                 } else {
                     const query = `
             DELETE FROM studentuserscontent
-            WHERE id_studenttopics = ? AND id_user not in (${users})
+            WHERE id_studenttopics = ? AND id_user not in (?)
             `;
 
-                    dbConn.query(query, [idTopic], function (err, rows) {
+                    dbConn.query(query, [idTopic, users], function (err, rows) {
                         if (err) {
                             res.status(409).json({
                                 status: 'error',
@@ -425,7 +425,7 @@ router.put('/:idTopic', ensureToken, function (req, res, next) {
 });
 
 router.put('/alltopics/changeorder', ensureToken, function (req, res, next) {
-    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
         if (err) {
             res.status(409).json({
                 status: 'error',

@@ -74,7 +74,7 @@ router.get('/:idTopic', function(req, res, next) {
  *              description: "to do implement code errors"
  */
 router.post('/',ensureToken , upload.single('pdf'), function(req, res, next) {
-    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
         if(err){
           res.status(409).json({
             status: 'error',
@@ -103,7 +103,7 @@ router.post('/',ensureToken , upload.single('pdf'), function(req, res, next) {
 });
 
 router.put('/pdf/:idContentTopic',ensureToken , upload.single('pdf'), function(req, res, next) {
-    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
         if(err){
           res.status(409).json({
             status: 'error',
@@ -133,7 +133,7 @@ router.put('/pdf/:idContentTopic',ensureToken , upload.single('pdf'), function(r
 
 
 router.put('/text/:idContentTopic',ensureToken ,  function(req, res, next) {
-    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
         if(err){
           res.status(409).json({
             status: 'error',
@@ -162,7 +162,7 @@ router.put('/text/:idContentTopic',ensureToken ,  function(req, res, next) {
 });
 
 router.delete('/:idContentTopic',ensureToken, function(req, res, next) {
-  jwt.verify(req.token, 'my_secret_key', (err, data) => {
+  jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
       if(err){
         res.status(409).json({
           status: 'error',

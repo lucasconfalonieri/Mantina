@@ -99,7 +99,7 @@ const { id } = req.params;
  *              description: "to do implement code errors"
  */
 router.post('/', ensureToken , function(req, res, next) {
-    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
         if(err){
           res.status(409).json({
             status: 'error',
@@ -157,7 +157,7 @@ router.post('/', ensureToken , function(req, res, next) {
  *              description: "to do implement code errors"
  */
 router.put('/:idSubject',ensureToken, function(req, res, next) {
-    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
         if(err){
           res.status(409).json({
             status: 'error',
@@ -186,7 +186,7 @@ router.put('/:idSubject',ensureToken, function(req, res, next) {
 });
 
 router.delete('/:idSubject',ensureToken, function(req, res, next) {
-    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
         if(err){
           res.status(409).json({
             status: 'error',

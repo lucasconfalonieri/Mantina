@@ -7,8 +7,8 @@ const nodemailer = require('nodemailer');
     host: 'ci1.toservers.com',
     port: '465',
     auth: {
-        user: 'info@mantina.com',
-         pass: 'Mantina.2112'
+        user: process.env.SMTP_USER,
+         pass: process.env.SMTP_PASSWORD
     }
 });
   

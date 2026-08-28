@@ -29,7 +29,7 @@ module.exports = {
     
     },
     validate(req, res, next){
-        jwt.verify(req.token, 'my_secret_key', (err, data) => {
+        jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
             if (err) {
               res.status(409).json({
                 status: 'error',

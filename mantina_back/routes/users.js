@@ -6,7 +6,7 @@ const { ensureToken } = require('../core/auth');
 
 /* GET users listing. */
 router.get('/', ensureToken, function(req, res, next) {
-    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
         if(err){
           res.status(409).json({
             status: 'error',
@@ -43,7 +43,7 @@ router.get('/', ensureToken, function(req, res, next) {
 });
 
 router.put('/:idUser',ensureToken, function(req, res, next) {
-  jwt.verify(req.token, 'my_secret_key', (err, data) => {
+  jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
       if(err){
         res.status(409).json({
           status: 'error',
@@ -73,7 +73,7 @@ router.put('/:idUser',ensureToken, function(req, res, next) {
 });
 
 router.delete('/:idUser',ensureToken, function(req, res, next) {
-  jwt.verify(req.token, 'my_secret_key', (err, data) => {
+  jwt.verify(req.token, process.env.JWT_SECRET, (err, data) => {
       if(err){
         res.status(409).json({
           status: 'error',
