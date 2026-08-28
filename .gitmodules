@@ -1,0 +1,3 @@
+[submodule "mantina_backoffice"]
+	path = mantina_backoffice
+	url = https://github.com/lucasconfalonieri/mantina_backoffice.git
