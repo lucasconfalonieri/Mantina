@@ -4,6 +4,9 @@
   "description": "Material Dashboard React. Coded by Creative Tim",
   "private": false,
   "main": "dist/index.js",
+  "engines": {
+    "node": ">=20.17.0"
+  },
   "dependencies": {
     "@material-ui/core": "^4.12.1",
     "@material-ui/icons": "4.9.1",
@@ -14,7 +17,7 @@
     "classnames": "2.2.6",
     "framer-motion": "^5.2.1",
     "history": "4.10.1",
-    "pdfjs-dist": "^2.5.207",
+    "pdfjs-dist": "2.5.207",
     "perfect-scrollbar": "1.5.0",
     "prop-types": "15.7.2",
     "react": "16.13.1",
@@ -28,9 +31,9 @@
     "react-swipeable-views": "0.13.9"
   },
   "scripts": {
-    "start": "export HTTPS=true&&SSL_CRT_FILE=cert.pem&&SSL_KEY_FILE=key.pem react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
+    "test": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
     "lint:check": "eslint . --ext=js,jsx;  exit 0",
@@ -56,6 +59,7 @@
     "typescript": "3.9.3"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-prettier": "3.1.3",
