@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -15,39 +15,33 @@ import AlumnosContenido from 'views/Alumnos/AlumnosContenido.js';
 import { getStudentContents } from '../../utils/api';
 import styles from "assets/css/material-dashboard-react.css";
 
-class AlumnosContenidos extends Component {
-  constructor(props) {
-    super(props);
+export default function AlumnosContenidos(props) {
+  const { id_studentTopic_selected } = props;
+  const [alumnosContenidosArray, setAlumnosContenidosArray] = useState([]);
+  const [tema, setTema] = useState("");
+  const [loading, setLoading] = useState(true);
 
-    this.state = {
-      id_studentTopic_selected: props.id_studentTopic_selected,
-      alumnosContenidosArray: [],
-      tema: "",
-      loading: true,
-    };
-  }
-
-  componentDidMount() {
-    const id_selected = this.state.id_studentTopic_selected;
+  useEffect(() => {
+    let isMounted = true;
     //TODO
-    getStudentContents(localStorage.getItem('user'), id_selected)
-
+    getStudentContents(localStorage.getItem('user'), id_studentTopic_selected)
     .then((response) => {
-        this.setState({
-            alumnosContenidosArray: response.data.studentcontents,
-            tema: response.data.topicName,
-            loading: false,
-        });
+        if (isMounted) {
+            setAlumnosContenidosArray(response.data.studentcontents);
+            setTema(response.data.topicName);
+            setLoading(false);
+        }
     })
     .catch(error => {
 
     });
-  }
 
+    return () => {
+        isMounted = false;
+    };
+  }, [id_studentTopic_selected]);
 
-  renderContenidos = () => {
-    const { alumnosContenidosArray } = this.state;
-
+  const renderContenidos = () => {
     if (alumnosContenidosArray.length == 0) {
         return (
             <div>
@@ -68,7 +62,7 @@ class AlumnosContenidos extends Component {
      }
   }
 
-  showSkeleton = () => {
+  const showSkeleton = () => {
       return (
       <>
           <GridItem xs={12} sm={12} md={12} >
@@ -110,22 +104,16 @@ class AlumnosContenidos extends Component {
       )
     }
 
-  render() {
-    const { loading } = this.state;
-    let { tema } = this.state;
-    let { id_subtopic_selected } = this.state;
-    tema = tema.toUpperCase();
+  const temaUpper = tema.toUpperCase();
 
-    return (
-        <div>
+  return (
+      <div>
 
-            <h2 className="titleFormat">CONTENIDOS relacionados a {tema}</h2>
+          <h2 className="titleFormat">CONTENIDOS relacionados a {temaUpper}</h2>
 
-            <GridContainer>
-                {loading ? this.showSkeleton() : this.renderContenidos()}
-            </GridContainer>
-        </div>
-    );
-  }
+          <GridContainer>
+              {loading ? showSkeleton() : renderContenidos()}
+          </GridContainer>
+      </div>
+  );
 }
-export default AlumnosContenidos;

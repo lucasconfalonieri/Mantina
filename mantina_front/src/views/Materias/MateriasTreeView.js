@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState, useEffect } from 'react';
 import TreeView from '@material-ui/lab/TreeView';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -12,17 +11,39 @@ import GridContainer from "components/Grid/GridContainer.js";
 import TreeViewStyles from '../../assets/css/material-dashboard-react.css';
 import { getTreeView } from '../../utils/api';
 
-class MateriasTreeView extends Component {
-    constructor(props) {
-        super(props);
+export default function MateriasTreeView() {
+    const [nodes, setNodes] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-        this.state = {
-          nodes: [],
-          loading: true,
+    useEffect(() => {
+        let isMounted = true;
+
+        getTreeView()
+        .then(json => {
+            const nodesResult = [];
+
+            json.data.treeView.forEach(result => {
+                nodesResult.push(result);
+            });
+
+            return nodesResult;
+        })
+        .then(allNodes => {
+            if (isMounted) {
+                setNodes(allNodes);
+                setLoading(false);
+            }
+        })
+        .catch(error => {
+          // do something with the error (report it, etc.)
+        })
+
+        return () => {
+            isMounted = false;
         };
-    }
+    }, []);
 
-    renderContent = (contentNode) => {
+    const renderContent = (contentNode) => {
         const label = {
             color: '#00acc1',
         };
@@ -45,7 +66,7 @@ class MateriasTreeView extends Component {
         });
     }
 
-    renderTopic = (topicNode) => {
+    const renderTopic = (topicNode) => {
         return topicNode.topics.map(topNode => {
             return(
                 <TreeItem key={topNode.id_topic+"top"} nodeId={topNode.id_topic+"top"}
@@ -58,17 +79,15 @@ class MateriasTreeView extends Component {
                       </Typography>
                     </div>
                   }>
-                {this.renderContent(topNode.contents)}
+                {renderContent(topNode.contents)}
                 </TreeItem>
             );
         });
     }
 
-    renderTree = () => {
-        const { nodes } = this.state;
-
+    const renderTree = () => {
         return nodes.map(node => {
-            const { id_subject, subject_name, topicNode } = node;
+            const { id_subject, subject_name } = node;
 
             return(
                 <TreeItem key={id_subject+"sub"} nodeId={id_subject+"sub"}
@@ -82,54 +101,25 @@ class MateriasTreeView extends Component {
                         </div>
                       }>
 
-                {this.renderTopic(node)}
+                {renderTopic(node)}
 
                 </TreeItem>
             );
         });
     }
 
-    componentDidMount() {
-        getTreeView()
-        .then(json => {
-            const nodes = [];
+    return (
+        //FIXME: AGREGAR SKELETON
+        <div>
+            {
+                <TreeView
+                        defaultCollapseIcon={<ExpandMoreIcon />}
+                        defaultExpandIcon={<ChevronRightIcon />} >
 
-            json.data.treeView.forEach(result => {
-                nodes.push(result);
-            });
+                    {renderTree()}
 
-            return nodes;
-        })
-        .then(allNodes => {
-            this.setState({
-                nodes: allNodes,
-                loading: false,
-            });
-        })
-        .catch(error => {
-          // do something with the error (report it, etc.)
-        })
-    }
-
-    render() {
-        const { loading } = this.state;
-        return (
-            //FIXME: AGREGAR SKELETON
-            <div>
-                {
-                    <TreeView
-                            defaultCollapseIcon={<ExpandMoreIcon />}
-                            defaultExpandIcon={<ChevronRightIcon />} >
-
-                        {this.renderTree()}
-
-                    </TreeView>
-                 }
-            </div>
-        )
-    }
+                </TreeView>
+             }
+        </div>
+    )
 }
-export default MateriasTreeView;
-
-
-

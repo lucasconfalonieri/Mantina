@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { useState, useEffect } from 'react';
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -12,17 +12,13 @@ import GridItem from "components/Grid/GridItem.js";
 import Materia from 'views/Materias/Materia.js';
 import { getMaterias } from '../../utils/api';
 
-class Materias extends Component {
-  constructor(props) {
-    super(props);
+export default function Materias() {
+  const [materiasArray, setMateriasArray] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    this.state = {
-      materiasArray: [],
-      loading: true,
-    };
-  }
+  useEffect(() => {
+    let isMounted = true;
 
-  componentDidMount() {
     getMaterias()
     .then(json => {
         const materias = [];
@@ -32,19 +28,21 @@ class Materias extends Component {
         return materias;
     })
     .then(allMaterias => {
-        this.setState({
-            materiasArray: allMaterias,
-            loading: false,
-        });
+        if (isMounted) {
+            setMateriasArray(allMaterias);
+            setLoading(false);
+        }
     })
     .catch(error => {
         // do something with the error (report it, etc.)
     });
-  }
 
-  renderMaterias = () => {
-    const { materiasArray } = this.state;
+    return () => {
+        isMounted = false;
+    };
+  }, []);
 
+  const renderMaterias = () => {
     if (materiasArray.length == 0) {
         return (
             <div>
@@ -65,7 +63,7 @@ class Materias extends Component {
      }
   }
 
-  showSkeleton = () => {
+  const showSkeleton = () => {
     return (
     <>
         <GridItem xs={12} sm={12} md={4} >
@@ -143,13 +141,9 @@ class Materias extends Component {
     )
   }
 
-  render() {
-    const { loading } = this.state;
-    return (
-      <GridContainer>
-        {loading ? this.showSkeleton() : this.renderMaterias() }
-      </GridContainer>
-    );
-  }
+  return (
+    <GridContainer>
+      {loading ? showSkeleton() : renderMaterias() }
+    </GridContainer>
+  );
 }
-export default Materias;

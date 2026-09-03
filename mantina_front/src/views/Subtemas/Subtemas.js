@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -15,37 +15,33 @@ import Link from '@material-ui/core/Link';
 import Subtema from 'views/Subtemas/Subtema.js';
 import { getSubtemasByTema } from '../../utils/api';
 
-class Subtemas extends Component {
-  constructor(props) {
-    super(props);
+export default function Subtemas(props) {
+  const { id_topic_selected } = props;
+  const [subtemasArray, setSubtemasArray] = useState([]);
+  const [tema, setTema] = useState("");
+  const [loading, setLoading] = useState(true);
 
-    this.state = {
-      id_topic_selected: props.id_topic_selected,
-      subtemasArray: [],
-      tema: "",
-      loading: true,
-    };
-  }
+  useEffect(() => {
+    let isMounted = true;
 
-  componentDidMount() {
-    const id_selected = this.state.id_topic_selected;
-    getSubtemasByTema(id_selected)
-
+    getSubtemasByTema(id_topic_selected)
     .then((response) => {
-        this.setState({
-            subtemasArray: response.data.subtopics,
-            tema: response.data.topicName,
-            loading: false,
-        });
+        if (isMounted) {
+            setSubtemasArray(response.data.subtopics);
+            setTema(response.data.topicName);
+            setLoading(false);
+        }
     })
     .catch(error => {
 
     });
-  }
 
-  renderSubtemas = () => {
-    const { subtemasArray } = this.state;
+    return () => {
+        isMounted = false;
+    };
+  }, [id_topic_selected]);
 
+  const renderSubtemas = () => {
     if (subtemasArray.length == 0) {
         return (
             <div>
@@ -66,21 +62,9 @@ class Subtemas extends Component {
     }
   }
 
-  showSkeleton = () => {
+  const showSkeleton = () => {
       return (
       <>
-          <GridItem xs={12} sm={12} md={4} >
-              <Card style={{ height: 75 }}>
-                  <CardHeader color="warning" stats icon>
-                      <CardIcon>
-                          <Skeleton animation="false" variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
-                      </CardIcon>
-                      <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%", marginTop: -60}} />
-                      <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%" }} />
-                  </CardHeader>
-              </Card>
-          </GridItem>
-
           <GridItem xs={12} sm={12} md={4} >
               <Card style={{ height: 75 }}>
                   <CardHeader color="warning" stats icon>
@@ -144,36 +128,30 @@ class Subtemas extends Component {
       )
     }
 
-  render() {
-    const { loading } = this.state;
-    let { tema } = this.state;
-    let { id_topic_selected } = this.state;
-    tema = tema.toUpperCase();
+  const temaUpper = tema.toUpperCase();
 
-    return (
-        <div>
-            <Breadcrumbs separator="›" aria-label="breadcrumb">
-                <Link color="inherit" href="/" className="custom-link">
-                    {localStorage.getItem("historyMateriaName")}
-                </Link>
+  return (
+      <div>
+          <Breadcrumbs separator="›" aria-label="breadcrumb">
+              <Link color="inherit" href="/" className="custom-link">
+                  {localStorage.getItem("historyMateriaName")}
+              </Link>
 
-                <Link color="inherit" href={"/temas/" + localStorage.getItem("historyMateriaId")} className="custom-link">
-                    {localStorage.setItem("historyTemaName", tema)}
-                    {localStorage.setItem("historyTemaId", id_topic_selected)}
+              <Link color="inherit" href={"/temas/" + localStorage.getItem("historyMateriaId")} className="custom-link">
+                  {localStorage.setItem("historyTemaName", temaUpper)}
+                  {localStorage.setItem("historyTemaId", id_topic_selected)}
 
-                    {tema}
-                </Link>
+                  {temaUpper}
+              </Link>
 
-                <Typography color="textPrimary">SubTemas</Typography>
-            </Breadcrumbs>
+              <Typography color="textPrimary">SubTemas</Typography>
+          </Breadcrumbs>
 
-            <h2 className="titleFormat">SUB-TEMAS relacionados a {tema}</h2>
+          <h2 className="titleFormat">SUB-TEMAS relacionados a {temaUpper}</h2>
 
-            <GridContainer>
-                {loading ? this.showSkeleton() : this.renderSubtemas()}
-            </GridContainer>
-        </div>
-    );
-  }
+          <GridContainer>
+              {loading ? showSkeleton() : renderSubtemas()}
+          </GridContainer>
+      </div>
+  );
 }
-export default Subtemas;

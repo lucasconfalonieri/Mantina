@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -15,38 +15,33 @@ import Contenido from 'views/Contenidos/Contenido.js';
 import { getContenidosByTema } from '../../utils/api';
 import styles from "assets/css/material-dashboard-react.css";
 
-class Contenidos extends Component {
-  constructor(props) {
-    super(props);
+export default function Contenidos(props) {
+  const { id_topic_selected } = props;
+  const [contenidosArray, setContenidosArray] = useState([]);
+  const [tema, setTema] = useState("");
+  const [loading, setLoading] = useState(true);
 
-    this.state = {
-      id_topic_selected: props.id_topic_selected,
-      contenidosArray: [],
-      tema: "",
-      loading: true,
-    };
-  }
+  useEffect(() => {
+    let isMounted = true;
 
-  componentDidMount() {
-    const id_selected = this.state.id_topic_selected;
-    getContenidosByTema(id_selected)
-
+    getContenidosByTema(id_topic_selected)
     .then((response) => {
-        this.setState({
-            contenidosArray: response.data.contentstopics,
-            tema: response.data.topicName,
-            loading: false,
-        });
+        if (isMounted) {
+            setContenidosArray(response.data.contentstopics);
+            setTema(response.data.topicName);
+            setLoading(false);
+        }
     })
     .catch(error => {
 
     });
-  }
 
+    return () => {
+        isMounted = false;
+    };
+  }, [id_topic_selected]);
 
-  renderContenidos = () => {
-    const { contenidosArray } = this.state;
-
+  const renderContenidos = () => {
     if (contenidosArray.length == 0) {
         return (
             <div>
@@ -67,7 +62,7 @@ class Contenidos extends Component {
      }
   }
 
-  showSkeleton = () => {
+  const showSkeleton = () => {
       return (
       <>
           <GridItem xs={12} sm={12} md={12} >
@@ -109,35 +104,29 @@ class Contenidos extends Component {
       )
     }
 
-  render() {
-    const { loading } = this.state;
-    let { tema } = this.state;
-    let { id_topic_selected } = this.state;
-    tema = tema.toUpperCase();
+  const temaUpper = tema.toUpperCase();
 
-    return (
-        <div>
-            <Breadcrumbs separator="›" aria-label="breadcrumb">
-                <Link color="inherit" href="/" className="custom-link">
-                    {localStorage.getItem("historyMateriaName")}
-                </Link>
+  return (
+      <div>
+          <Breadcrumbs separator="›" aria-label="breadcrumb">
+              <Link color="inherit" href="/" className="custom-link">
+                  {localStorage.getItem("historyMateriaName")}
+              </Link>
 
-                <Link color="inherit" href={"/temas/" + localStorage.getItem("historyMateriaId")} className="custom-link">
-                    {localStorage.setItem("historyTemaName", tema)}
-                    {localStorage.setItem("historyTemaId", id_topic_selected)}
+              <Link color="inherit" href={"/temas/" + localStorage.getItem("historyMateriaId")} className="custom-link">
+                  {localStorage.setItem("historyTemaName", temaUpper)}
+                  {localStorage.setItem("historyTemaId", id_topic_selected)}
 
-                    {tema}
-                </Link>
-                <Typography color="textPrimary">Contenidos</Typography>
-            </Breadcrumbs>
+                  {temaUpper}
+              </Link>
+              <Typography color="textPrimary">Contenidos</Typography>
+          </Breadcrumbs>
 
-            <h2 className="titleFormat">CONTENIDOS relacionados a {tema}</h2>
+          <h2 className="titleFormat">CONTENIDOS relacionados a {temaUpper}</h2>
 
-            <GridContainer>
-                {loading ? this.showSkeleton() : this.renderContenidos()}
-            </GridContainer>
-        </div>
-    );
-  }
+          <GridContainer>
+              {loading ? showSkeleton() : renderContenidos()}
+          </GridContainer>
+      </div>
+  );
 }
-export default Contenidos;

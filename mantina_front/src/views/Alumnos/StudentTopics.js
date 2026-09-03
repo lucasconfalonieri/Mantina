@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { useState, useEffect } from 'react';
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -12,17 +12,13 @@ import GridItem from "components/Grid/GridItem.js";
 import StudentTopic from 'views/Alumnos/StudentTopic.js';
 import { getStudentTopics } from '../../utils/api';
 
-class StudentTopics extends Component {
-  constructor(props) {
-    super(props);
+export default function StudentTopics() {
+  const [studentTopicsArray, setStudentTopicsArray] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    this.state = {
-      studentTopicsArray: [],
-      loading: true,
-    };
-  }
+  useEffect(() => {
+    let isMounted = true;
 
-  componentDidMount() {
     getStudentTopics(localStorage.getItem('user'))
     .then(json => {
         const studentTopics = [];
@@ -32,19 +28,21 @@ class StudentTopics extends Component {
         return studentTopics;
     })
     .then(allStudentTopics => {
-        this.setState({
-            studentTopicsArray: allStudentTopics,
-            loading: false,
-        });
+        if (isMounted) {
+            setStudentTopicsArray(allStudentTopics);
+            setLoading(false);
+        }
     })
     .catch(error => {
         // do something with the error (report it, etc.)
     });
-  }
 
-  renderStudentTopic = () => {
-    const { studentTopicsArray } = this.state;
+    return () => {
+        isMounted = false;
+    };
+  }, []);
 
+  const renderStudentTopic = () => {
     if (studentTopicsArray.length == 0) {
         return (
             <div>
@@ -65,21 +63,9 @@ class StudentTopics extends Component {
      }
   }
 
-  showSkeleton = () => {
+  const showSkeleton = () => {
     return (
     <>
-        <GridItem xs={12} sm={12} md={4} >
-            <Card style={{ height: 75 }}>
-                <CardHeader color="warning" stats icon>
-                    <CardIcon>
-                        <Skeleton animation="false" variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
-                    </CardIcon>
-                    <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%", marginTop: -60}} />
-                    <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%" }} />
-                </CardHeader>
-            </Card>
-        </GridItem>
-
         <GridItem xs={12} sm={12} md={4} >
             <Card style={{ height: 75 }}>
                 <CardHeader color="warning" stats icon>
@@ -143,13 +129,9 @@ class StudentTopics extends Component {
     )
   }
 
-  render() {
-    const { loading } = this.state;
-    return (
-      <GridContainer>
-        {loading ? this.showSkeleton() : this.renderStudentTopic() }
-      </GridContainer>
-    );
-  }
+  return (
+    <GridContainer>
+      {loading ? showSkeleton() : renderStudentTopic() }
+    </GridContainer>
+  );
 }
-export default StudentTopics;

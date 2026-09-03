@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import GridContainer from "components/Grid/GridContainer.js";
 import Tema from 'views/Temas/Tema.js';
 import Skeleton from '@material-ui/lab/Skeleton';
@@ -14,37 +14,33 @@ import { getTemasByMateria } from '../../utils/api';
 import styles from "assets/css/material-dashboard-react.css";
 import { Breadcrumbs, Link } from "@material-ui/core";
 
-class Temas extends Component {
-  constructor(props) {
-    super(props);
+export default function Temas(props) {
+  const { id_subject_selected } = props;
+  const [temasArray, setTemasArray] = useState([]);
+  const [materia, setMateria] = useState("");
+  const [loading, setLoading] = useState(true);
 
-    this.state = {
-      id_subject_selected: props.id_subject_selected,
-      temasArray: [],
-      materia: "",
-      loading: true,
-    };
-  }
+  useEffect(() => {
+    let isMounted = true;
 
-  componentDidMount() {
-    const id_selected = this.state.id_subject_selected;
-    getTemasByMateria(id_selected)
-
+    getTemasByMateria(id_subject_selected)
     .then((response) => {
-        this.setState({
-            temasArray: response.data.topics,
-            materia: response.data.subjectName,
-            loading: false,
-        });
+        if (isMounted) {
+            setTemasArray(response.data.topics);
+            setMateria(response.data.subjectName);
+            setLoading(false);
+        }
     })
     .catch(error => {
 
     });
-  }
 
-  renderTemas = () => {
-    const { temasArray } = this.state;
+    return () => {
+        isMounted = false;
+    };
+  }, [id_subject_selected]);
 
+  const renderTemas = () => {
     if (temasArray.length == 0) {
         return (
             <div>
@@ -65,21 +61,9 @@ class Temas extends Component {
     }
   }
 
-  showSkeleton = () => {
+  const showSkeleton = () => {
     return (
     <>
-        <GridItem xs={12} sm={12} md={4} >
-            <Card style={{ height: 75 }}>
-                <CardHeader color="warning" stats icon>
-                    <CardIcon>
-                        <Skeleton animation="false" variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
-                    </CardIcon>
-                    <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%", marginTop: -60}} />
-                    <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%" }} />
-                </CardHeader>
-            </Card>
-        </GridItem>
-
         <GridItem xs={12} sm={12} md={4} >
             <Card style={{ height: 75 }}>
                 <CardHeader color="warning" stats icon>
@@ -143,33 +127,26 @@ class Temas extends Component {
     )
   }
 
-  render() {
-    const { loading } = this.state;
-    let { materia } = this.state;
-    let { id_subject_selected } = this.state;
+  const materiaUpper = materia.toUpperCase();
 
-    materia = materia.toUpperCase();
+  return (
+      <div>
+          <Breadcrumbs separator="›" aria-label="breadcrumb">
+              <Link color="inherit" href="/" className="custom-link">
+                  {localStorage.setItem("historyMateriaName", materiaUpper)}
+                  {localStorage.setItem("historyMateriaId", id_subject_selected)}
 
-    return (
-        <div>
-            <Breadcrumbs separator="›" aria-label="breadcrumb">
-                <Link color="inherit" href="/" className="custom-link">
-                    {localStorage.setItem("historyMateriaName", materia)}
-                    {localStorage.setItem("historyMateriaId", id_subject_selected)}
+                  {materiaUpper}
+              </Link>
 
-                    {materia}
-                </Link>
+              <Typography color="textPrimary">Temas</Typography>
+          </Breadcrumbs>
 
-                <Typography color="textPrimary">Temas</Typography>
-            </Breadcrumbs>
+          <h2 className="titleFormat">TEMAS relacionados a {materiaUpper} </h2>
 
-            <h2 className="titleFormat">TEMAS relacionados a {materia} </h2>
-
-            <GridContainer>
-                { loading ? this.showSkeleton() : this.renderTemas() }
-            </GridContainer>
-        </div>
-    );
-  }
+          <GridContainer>
+              { loading ? showSkeleton() : renderTemas() }
+          </GridContainer>
+      </div>
+  );
 }
-export default Temas;

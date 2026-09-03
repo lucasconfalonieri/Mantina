@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_API_URL;
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export function getMaterias() {
     return axios.get(BASE_URL + '/subjects');
@@ -37,7 +37,7 @@ export function getTreeView() {
 export function getStudentTopics(user) {
     return axios.get(BASE_URL + '/studenttopics/' + user, {
         headers: {
-            'Authorization': 'Beraer ' + JSON.parse(localStorage.getItem('token'))
+            'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token'))
         }
     });
 }
@@ -45,7 +45,7 @@ export function getStudentTopics(user) {
 export function getStudentContents(user, id_studentTopic) {
     return axios.get(BASE_URL + '/studentcontents/' + id_studentTopic + '/' + user, {
         headers: {
-            'Authorization': 'Beraer ' + JSON.parse(localStorage.getItem('token'))
+            'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token'))
         }
     });
 
@@ -58,7 +58,7 @@ export function getForgotPassword(user) {
 export function insertNewPassword(body, hash) {
     return axios.put(BASE_URL + '/login/forgotpassword', body, {
         headers: {'Content-Type': 'application/json',
-        'Authorization' : 'Beraer ' + hash}
+        'Authorization' : 'Bearer ' + hash}
       });
 }
 
