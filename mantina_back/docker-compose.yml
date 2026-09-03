@@ -1,0 +1,16 @@
+services:
+  db:
+    image: mariadb:10.11
+    container_name: mantina_db_dev
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: nievasmicky_mantina
+    ports:
+      - "3307:3306"
+    volumes:
+      - mantina_db_data:/var/lib/mysql
+      - ./nievasmicky_mantina.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+
+volumes:
+  mantina_db_data:

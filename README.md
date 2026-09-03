@@ -9,7 +9,18 @@ Plataforma de campus para una escuela de aviación.
 ## Requisitos
 
 - Node.js `20.17.0` (fijado en el `.nvmrc` de cada app: `nvm use`)
-- MySQL accesible con las credenciales que configures en `mantina_back/.env`
+- Docker (para la base de datos de desarrollo local, ver abajo)
+
+## Base de datos local (desarrollo)
+
+El backend en producción corre contra MariaDB en el hosting, pero para desarrollo local no conviene apuntar ahí directo (no siempre es alcanzable desde una red hogareña, y evita tocar datos reales de alumnos sin querer). `mantina_back/docker-compose.yml` levanta una MariaDB 10.11 local (misma versión que producción) en el puerto **3307** del host (no 3306, para no chocar con otros MySQL/MariaDB que ya tengas corriendo, ej. Laragon/XAMPP).
+
+```
+cd mantina_back
+docker compose up -d
+```
+
+Si tenés un dump de la base (`.sql`, nunca se commitea — ver `.gitignore`), colocalo en `mantina_back/` y agregalo como volumen en `docker-compose.yml` bajo `/docker-entrypoint-initdb.d/` antes del primer `up` — se importa solo la primera vez que se crea el volumen. `mantina_back/.env` ya viene apuntando a esta base local (`DB_HOST=127.0.0.1`, `DB_PORT=3307`).
 
 ## Cómo levantar cada app
 
@@ -18,7 +29,7 @@ Plataforma de campus para una escuela de aviación.
 ```
 cd mantina_back
 npm install
-cp .env.example .env   # completar con las credenciales reales
+cp .env.example .env   # completar con las credenciales reales (o las de la DB local de arriba)
 npm run dev             # http://localhost:9080
 ```
 
