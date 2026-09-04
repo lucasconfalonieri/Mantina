@@ -12,6 +12,7 @@ dist/
 build/
 coverage/
 .npmrc
+!mantina_front/.npmrc
 
 # editor/OS
 .vscode/
