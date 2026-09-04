@@ -49,10 +49,11 @@ export default function AlumnosContenidos(props) {
           );
     } else {
         return alumnosContenidosArray.map(contenido => {
-          const { text_pdf, name_pdf } = contenido;
+          const { id_studentcontent, text_pdf, name_pdf } = contenido;
 
           return (
            <AlumnosContenido
+              key={id_studentcontent}
               text_pdf={text_pdf}
               name_pdf={name_pdf}
             />
@@ -68,7 +69,7 @@ export default function AlumnosContenidos(props) {
               <Card style={{ height: 75 }}>
                   <CardHeader color="warning" stats icon>
                       <CardIcon>
-                          <Skeleton animation="false" variant="rect" height={90} width="10%" style={{ marginTop: -20 }}/>
+                          <Skeleton animation={false} variant="rect" height={90} width="10%" style={{ marginTop: -20 }}/>
                       </CardIcon>
                       <Skeleton animation="wave" height={20} width="30%" style={{ marginLeft: "70%", marginTop: -60}} />
                       <Skeleton animation="wave" height={20} width="30%" style={{ marginLeft: "70%"}} />
@@ -80,7 +81,7 @@ export default function AlumnosContenidos(props) {
                 <Card style={{ height: 75 }}>
                     <CardHeader color="warning" stats icon>
                         <CardIcon>
-                            <Skeleton animation="false" variant="rect" height={90} width="10%" style={{ marginTop: -20 }}/>
+                            <Skeleton animation={false} variant="rect" height={90} width="10%" style={{ marginTop: -20 }}/>
                         </CardIcon>
                         <Skeleton animation="wave" height={20} width="30%" style={{ marginLeft: "70%", marginTop: -60}} />
                         <Skeleton animation="wave" height={20} width="30%" style={{ marginLeft: "70%"}} />
@@ -92,7 +93,7 @@ export default function AlumnosContenidos(props) {
               <Card style={{ height: 75 }}>
                   <CardHeader color="warning" stats icon>
                       <CardIcon>
-                          <Skeleton animation="false" variant="rect" height={90} width="10%" style={{ marginTop: -20 }}/>
+                          <Skeleton animation={false} variant="rect" height={90} width="10%" style={{ marginTop: -20 }}/>
                       </CardIcon>
                       <Skeleton animation="wave" height={20} width="30%" style={{ marginLeft: "70%", marginTop: -60}} />
                       <Skeleton animation="wave" height={20} width="30%" style={{ marginLeft: "70%"}} />

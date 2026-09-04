@@ -55,6 +55,7 @@ export default function StudentTopics() {
 
           return (
             <StudentTopic
+              key={id_studenttopics}
               name={name}
               id_studentTopics={id_studenttopics}
             />
@@ -70,7 +71,7 @@ export default function StudentTopics() {
             <Card style={{ height: 75 }}>
                 <CardHeader color="warning" stats icon>
                     <CardIcon>
-                        <Skeleton animation="false" variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
+                        <Skeleton animation={false} variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
                     </CardIcon>
                     <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%", marginTop: -60}} />
                     <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%" }} />
@@ -82,7 +83,7 @@ export default function StudentTopics() {
             <Card style={{ height: 75 }}>
                 <CardHeader color="warning" stats icon>
                     <CardIcon>
-                        <Skeleton animation="false" variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
+                        <Skeleton animation={false} variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
                     </CardIcon>
                     <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%", marginTop: -60}} />
                     <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%" }} />
@@ -94,7 +95,7 @@ export default function StudentTopics() {
             <Card style={{ height: 75 }}>
                 <CardHeader color="warning" stats icon>
                     <CardIcon>
-                        <Skeleton animation="false" variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
+                        <Skeleton animation={false} variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
                     </CardIcon>
                     <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%", marginTop: -60}} />
                     <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%" }} />
@@ -106,7 +107,7 @@ export default function StudentTopics() {
             <Card style={{ height: 75 }}>
                 <CardHeader color="warning" stats icon>
                     <CardIcon>
-                        <Skeleton animation="false" variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
+                        <Skeleton animation={false} variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
                     </CardIcon>
                     <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%", marginTop: -60}} />
                     <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%" }} />
@@ -118,7 +119,7 @@ export default function StudentTopics() {
             <Card style={{ height: 75 }}>
                 <CardHeader color="warning" stats icon>
                     <CardIcon>
-                        <Skeleton animation="false" variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
+                        <Skeleton animation={false} variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
                     </CardIcon>
                     <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%", marginTop: -60}} />
                     <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%" }} />

@@ -54,6 +54,7 @@ export default function Subtemas(props) {
 
           return (
            <Subtema
+              key={id_subtopic}
               name={name}
               id_subtopic={id_subtopic}
             />
@@ -69,7 +70,7 @@ export default function Subtemas(props) {
               <Card style={{ height: 75 }}>
                   <CardHeader color="warning" stats icon>
                       <CardIcon>
-                          <Skeleton animation="false" variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
+                          <Skeleton animation={false} variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
                       </CardIcon>
                       <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%", marginTop: -60}} />
                       <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%" }} />
@@ -81,7 +82,7 @@ export default function Subtemas(props) {
               <Card style={{ height: 75 }}>
                   <CardHeader color="warning" stats icon>
                       <CardIcon>
-                          <Skeleton animation="false" variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
+                          <Skeleton animation={false} variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
                       </CardIcon>
                       <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%", marginTop: -60}} />
                       <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%" }} />
@@ -93,7 +94,7 @@ export default function Subtemas(props) {
               <Card style={{ height: 75 }}>
                   <CardHeader color="warning" stats icon>
                       <CardIcon>
-                          <Skeleton animation="false" variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
+                          <Skeleton animation={false} variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
                       </CardIcon>
                       <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%", marginTop: -60}} />
                       <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%" }} />
@@ -105,7 +106,7 @@ export default function Subtemas(props) {
               <Card style={{ height: 75 }}>
                   <CardHeader color="warning" stats icon>
                       <CardIcon>
-                          <Skeleton animation="false" variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
+                          <Skeleton animation={false} variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
                       </CardIcon>
                       <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%", marginTop: -60}} />
                       <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%" }} />
@@ -117,7 +118,7 @@ export default function Subtemas(props) {
               <Card style={{ height: 75 }}>
                   <CardHeader color="warning" stats icon>
                       <CardIcon>
-                          <Skeleton animation="false" variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
+                          <Skeleton animation={false} variant="rect" height={90} width="20%" style={{ marginTop: -20 }}/>
                       </CardIcon>
                       <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%", marginTop: -60}} />
                       <Skeleton animation="wave" height={20} width="40%" style={{ marginLeft: "60%" }} />
