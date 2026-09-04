@@ -1,9 +1,10 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import Contenidos from 'views/Contenidos/Contenidos.js';
 import Button from '@material-ui/core/Button';
 
-export default function ContenidosPagina({ match, location, rest }) {
-    const id_topic = match.params.id_topic;
+export default function ContenidosPagina() {
+    const { id_topic } = useParams();
 
     return (
         <div>

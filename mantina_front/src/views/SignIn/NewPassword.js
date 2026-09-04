@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -41,9 +42,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NewPassword({ match, location, rest }) {
-  const user = match.params.user;
-  const hash = match.params.hash;
+export default function NewPassword() {
+  const { user, hash } = useParams();
   const classes = useStyles();
 
   const [password, setPassword] = React.useState("");
@@ -151,7 +151,7 @@ export default function NewPassword({ match, location, rest }) {
         </form>
         <Snackbar
         anchorOrigin={{
-          vertical: "center",
+          vertical: "top",
           horizontal: "center"
         }}
         open={openError} autoHideDuration={6000} onClose={handleCloseError}>
@@ -162,7 +162,7 @@ export default function NewPassword({ match, location, rest }) {
 
       <Snackbar
         anchorOrigin={{
-          vertical: "center",
+          vertical: "top",
           horizontal: "center"
         }}
         open={openSuccess} autoHideDuration={6000} onClose={handleCloseSuccess}>

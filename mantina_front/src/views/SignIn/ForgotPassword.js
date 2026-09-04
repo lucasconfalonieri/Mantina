@@ -145,7 +145,7 @@ export default function ForgotPassword() {
         </form>
         <Snackbar
         anchorOrigin={{
-          vertical: "center",
+          vertical: "top",
           horizontal: "center"
         }}
         open={openError} autoHideDuration={6000} onClose={handleCloseError}>
@@ -156,7 +156,7 @@ export default function ForgotPassword() {
 
       <Snackbar
         anchorOrigin={{
-          vertical: "center",
+          vertical: "top",
           horizontal: "center"
         }}
         open={openSuccess} autoHideDuration={6000} onClose={handleCloseSuccess}>

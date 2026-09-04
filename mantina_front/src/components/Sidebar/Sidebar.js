@@ -48,8 +48,7 @@ export default function Sidebar(props) {
         return (
           <NavLink
             to={prop.path}
-            className={activePro + classes.item}
-            activeClassName="active"
+            className={({ isActive }) => activePro + classes.item + (isActive ? ' active' : '')}
             key={key}
           >
             <ListItem button className={classes.itemLink + listItemClasses}>

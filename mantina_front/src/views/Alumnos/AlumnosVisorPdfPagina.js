@@ -1,11 +1,11 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 import AlumnosVisorPdf from 'views/Alumnos/AlumnosVisorPdf.js';
 import Button from '@material-ui/core/Button';
 
-export default function AlumnosVisorPdfPagina({ match, location, rest }) {
-    const name_pdf = match.params.name_pdf;
-    const name = match.params.name;
+export default function AlumnosVisorPdfPagina() {
+    const { name_pdf, name } = useParams();
 
     return (
         <div>

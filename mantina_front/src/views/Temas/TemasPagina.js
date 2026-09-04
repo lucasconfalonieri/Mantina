@@ -1,9 +1,10 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import Temas from 'views/Temas/Temas.js';
 import Button from '@material-ui/core/Button';
 
-export default function TemasPagina({ match, location, rest }) {
-    const id_subject = match.params.id_subject;
+export default function TemasPagina() {
+    const { id_subject } = useParams();
 
     return (
         <div>

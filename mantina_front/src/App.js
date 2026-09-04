@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 // creates a beautiful scrollbar
 import PerfectScrollbar from "perfect-scrollbar";
@@ -108,22 +108,22 @@ export default function App({ ...rest }) {
 
                         <div>
                             <div className={classes.container}>
-                                <Switch>
-                                    <Route path='/visor/:name_pdf/:name' component={VisorPdfPagina} />
-                                    <Route path='/contenidos/:id_topic' component={ContenidosPagina} />
-                                    <Route path='/temas/:id_subject' component={TemasPagina} />
-                                    <Route path='/materias' component={MateriasPagina} />
-                                    <Route path='/contacto' component={ContactoPagina} />
-                                    <Route path='/quienessomos' component={QuienesSomosPagina} />
-                                    <AuthRoute path='/alumnos/contenidos/:id_studentTopics' component={AlumnosContenidosPagina} />
-                                    <AuthRoute path='/alumnos/visor/:name_pdf/:name' component={AlumnosVisorPdfPagina} />
-                                    <AuthRoute path='/alumnos' component={AlumnosPagina} />
-                                    <Route path='/login' component={SignInPagina} />
-                                    <Route path='/recuperarcontrasena' component={ForgotPassword} />
-                                    <Route path='/ingresarcontrasena/:user/:hash' component={NewPassword} />
+                                <Routes>
+                                    <Route path='/visor/:name_pdf/:name' element={<VisorPdfPagina />} />
+                                    <Route path='/contenidos/:id_topic' element={<ContenidosPagina />} />
+                                    <Route path='/temas/:id_subject' element={<TemasPagina />} />
+                                    <Route path='/materias' element={<MateriasPagina />} />
+                                    <Route path='/contacto' element={<ContactoPagina />} />
+                                    <Route path='/quienessomos' element={<QuienesSomosPagina />} />
+                                    <Route path='/alumnos/contenidos/:id_studentTopics' element={<AuthRoute><AlumnosContenidosPagina /></AuthRoute>} />
+                                    <Route path='/alumnos/visor/:name_pdf/:name' element={<AuthRoute><AlumnosVisorPdfPagina /></AuthRoute>} />
+                                    <Route path='/alumnos' element={<AuthRoute><AlumnosPagina /></AuthRoute>} />
+                                    <Route path='/login' element={<SignInPagina />} />
+                                    <Route path='/recuperarcontrasena' element={<ForgotPassword />} />
+                                    <Route path='/ingresarcontrasena/:user/:hash' element={<NewPassword />} />
 
-                                    <Redirect from="/" to="/materias" />
-                                </Switch>
+                                    <Route path="*" element={<Navigate to="/materias" replace />} />
+                                </Routes>
                             </div>
                         </div>
                     </div>

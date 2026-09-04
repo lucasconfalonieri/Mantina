@@ -1,11 +1,11 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 import VisorPdf from 'views/PdfViewer/VisorPdf.js';
 import Button from '@material-ui/core/Button';
 
-export default function VisorPdfPagina({ match, location, rest }) {
-    const name_pdf = match.params.name_pdf;
-    const name = match.params.name
+export default function VisorPdfPagina() {
+    const { name_pdf, name } = useParams();
 
     return (
         <div>

@@ -190,7 +190,7 @@ export default function ContactForm() {
 
       <Snackbar
            anchorOrigin={{
-              vertical: "center",
+              vertical: "top",
               horizontal: "center"
            }}
            open={openError} autoHideDuration={6000} onClose={handleCloseError}>
@@ -201,7 +201,7 @@ export default function ContactForm() {
 
       <Snackbar
             anchorOrigin={{
-                vertical: "center",
+                vertical: "top",
                 horizontal: "center"
             }}
             open={openSuccess} autoHideDuration={6000} onClose={handleCloseSuccess}>
