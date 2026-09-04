@@ -82,7 +82,7 @@ export default function SignIn() {
       <div className={classes.paper}>
 
         <CardHeader color="warning" className="center-content">
-          <h4 className={classes.cardTitleWhite}>CICLO LECTIVO 2024</h4>
+          <h4 className={classes.cardTitleWhite}>CICLO LECTIVO {new Date().getFullYear()}</h4>
           <img src={loginImage}alt=""/>
         </CardHeader>
 
