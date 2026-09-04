@@ -13,7 +13,6 @@ import Link from '@material-ui/core/Link';
 
 import Contenido from 'views/Contenidos/Contenido.js';
 import { getContenidosByTema } from '../../utils/api';
-import styles from "assets/css/material-dashboard-react.css";
 
 export default function Contenidos(props) {
   const { id_topic_selected } = props;

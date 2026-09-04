@@ -4,8 +4,6 @@ import MateriasTreeView from 'views/Materias/MateriasTreeView.js';
 import Button from '@material-ui/core/Button';
 import Icon from "@material-ui/core/Icon";
 
-import styles from "assets/css/material-dashboard-react.css";
-
 export default function MateriasPagina() {
     const [showTreeView, setShowTreeView] = React.useState(JSON.parse(localStorage.getItem("showTreeView")));
     const [icon, setIcon] = React.useState(localStorage.getItem("iconLayout"));

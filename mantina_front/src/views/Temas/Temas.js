@@ -11,7 +11,6 @@ import Typography from '@material-ui/core/Typography';
 
 import { getTemasByMateria } from '../../utils/api';
 
-import styles from "assets/css/material-dashboard-react.css";
 import { Breadcrumbs, Link } from "@material-ui/core";
 
 export default function Temas(props) {

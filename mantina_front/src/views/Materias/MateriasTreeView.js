@@ -8,7 +8,6 @@ import Icon from "@material-ui/core/Icon";
 import Typography from '@material-ui/core/Typography';
 import GridContainer from "components/Grid/GridContainer.js";
 
-import TreeViewStyles from '../../assets/css/material-dashboard-react.css';
 import { getTreeView } from '../../utils/api';
 
 export default function MateriasTreeView() {

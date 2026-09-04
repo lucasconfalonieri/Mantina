@@ -13,7 +13,6 @@ import Link from '@material-ui/core/Link';
 
 import AlumnosContenido from 'views/Alumnos/AlumnosContenido.js';
 import { getStudentContents } from '../../utils/api';
-import styles from "assets/css/material-dashboard-react.css";
 
 export default function AlumnosContenidos(props) {
   const { id_studentTopic_selected } = props;
