@@ -16,10 +16,10 @@
 
 */
 // @material-ui/icons
-import Dashboard from "@material-ui/icons/Dashboard";
-import Person from "@material-ui/icons/Person";
-import MenuBook from "@material-ui/icons/MenuBook";
-import Email from "@material-ui/icons/Email";
+import Dashboard from "@mui/icons-material/Dashboard";
+import Person from "@mui/icons-material/Person";
+import MenuBook from "@mui/icons-material/MenuBook";
+import Email from "@mui/icons-material/Email";
 
 // core components/views for Admin layout
 import MateriasPagina from "views/Materias/MateriasPagina.js";

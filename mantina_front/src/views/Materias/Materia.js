@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "tss-react/mui";
 
-import Icon from "@material-ui/core/Icon";
+import Icon from "@mui/material/Icon";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardIcon from "components/Card/CardIcon.js";
@@ -10,10 +10,10 @@ import GridItem from "components/Grid/GridItem.js";
 
 import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles()(styles);
 
 const Materia = ({ name, id_subject }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
     <GridItem xs={12} sm={12} md={4}>

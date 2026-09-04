@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import TreeView from '@material-ui/lab/TreeView';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import TreeItem from '@material-ui/lab/TreeItem';
+import { SimpleTreeView } from '@mui/x-tree-view/SimpleTreeView';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { TreeItem } from '@mui/x-tree-view/TreeItem';
 import { Link } from "react-router-dom";
-import Icon from "@material-ui/core/Icon";
-import Typography from '@material-ui/core/Typography';
+import Icon from "@mui/material/Icon";
+import Typography from '@mui/material/Typography';
 import GridContainer from "components/Grid/GridContainer.js";
 
 import { getTreeView } from '../../utils/api';
@@ -48,8 +48,8 @@ export default function MateriasTreeView() {
         };
         return contentNode.map(contNode => {
             return(
-                <Link to={'/visor/' + contNode.content_name + "/" + contNode.content_title} style={label}>
-                    <TreeItem key={contNode.id_content+"cont"} nodeId={contNode.id_content+"cont"}
+                <Link key={contNode.id_content+"cont-link"} to={'/visor/' + contNode.content_name + "/" + contNode.content_title} style={label}>
+                    <TreeItem key={contNode.id_content+"cont"} itemId={contNode.id_content+"cont"}
                     label={
                         <div className="treeViewRoot">
                           <Icon className="treeViewIcon">done</Icon>
@@ -68,7 +68,7 @@ export default function MateriasTreeView() {
     const renderTopic = (topicNode) => {
         return topicNode.topics.map(topNode => {
             return(
-                <TreeItem key={topNode.id_topic+"top"} nodeId={topNode.id_topic+"top"}
+                <TreeItem key={topNode.id_topic+"top"} itemId={topNode.id_topic+"top"}
                 label={
                     <div className="treeViewRoot">
                       <Icon className="treeViewIcon">topic</Icon>
@@ -89,7 +89,7 @@ export default function MateriasTreeView() {
             const { id_subject, subject_name } = node;
 
             return(
-                <TreeItem key={id_subject+"sub"} nodeId={id_subject+"sub"}
+                <TreeItem key={id_subject+"sub"} itemId={id_subject+"sub"}
                 label={
                         <div className="treeViewRoot">
                           <Icon className="treeViewIcon">bookmarks</Icon>
@@ -111,13 +111,12 @@ export default function MateriasTreeView() {
         //FIXME: AGREGAR SKELETON
         <div>
             {
-                <TreeView
-                        defaultCollapseIcon={<ExpandMoreIcon />}
-                        defaultExpandIcon={<ChevronRightIcon />} >
+                <SimpleTreeView
+                        slots={{ collapseIcon: ExpandMoreIcon, expandIcon: ChevronRightIcon }} >
 
                     {renderTree()}
 
-                </TreeView>
+                </SimpleTreeView>
              }
         </div>
     )

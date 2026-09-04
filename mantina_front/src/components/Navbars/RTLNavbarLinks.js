@@ -1,29 +1,32 @@
 import React from "react";
 import classNames from "classnames";
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
-import MenuList from "@material-ui/core/MenuList";
-import Grow from "@material-ui/core/Grow";
-import Paper from "@material-ui/core/Paper";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
-import Hidden from "@material-ui/core/Hidden";
-import Poppers from "@material-ui/core/Popper";
+import { makeStyles } from "tss-react/mui";
+import MenuItem from "@mui/material/MenuItem";
+import MenuList from "@mui/material/MenuList";
+import Grow from "@mui/material/Grow";
+import Paper from "@mui/material/Paper";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+import Poppers from "@mui/material/Popper";
 // @material-ui/icons
-import Person from "@material-ui/icons/Person";
-import Notifications from "@material-ui/icons/Notifications";
-import Dashboard from "@material-ui/icons/Dashboard";
-import Search from "@material-ui/icons/Search";
+import Person from "@mui/icons-material/Person";
+import Notifications from "@mui/icons-material/Notifications";
+import Dashboard from "@mui/icons-material/Dashboard";
+import Search from "@mui/icons-material/Search";
 // core components
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-dashboard-react/components/rtlHeaderLinksStyle.js";
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles()(styles);
 
 export default function RTLNavbarLinks() {
-  const classes = useStyles();
+  const { classes } = useStyles();
+  const theme = useTheme();
+  const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
   const [open, setOpen] = React.useState(null);
   const handleToggle = event => {
     if (open && open.contains(event.target)) {
@@ -63,9 +66,7 @@ export default function RTLNavbarLinks() {
         className={classes.buttonLink}
       >
         <Dashboard className={classes.icons} />
-        <Hidden mdUp implementation="css">
-          <p className={classes.linkText}>آمارها</p>
-        </Hidden>
+        {!isMdUp && <p className={classes.linkText}>آمارها</p>}
       </Button>
       <div className={classes.manager}>
         <Button
@@ -79,11 +80,11 @@ export default function RTLNavbarLinks() {
         >
           <Notifications className={classes.icons} />
           <span className={classes.notifications}>۵</span>
-          <Hidden mdUp implementation="css">
+          {!isMdUp && (
             <p onClick={handleToggle} className={classes.linkText}>
               اعلان‌ها
             </p>
-          </Hidden>
+          )}
         </Button>
         <Poppers
           open={Boolean(open)}
@@ -153,9 +154,7 @@ export default function RTLNavbarLinks() {
         className={classes.buttonLink}
       >
         <Person className={classes.icons} />
-        <Hidden mdUp implementation="css">
-          <p className={classes.linkText}>حساب کاربری</p>
-        </Hidden>
+        {!isMdUp && <p className={classes.linkText}>حساب کاربری</p>}
       </Button>
     </div>
   );

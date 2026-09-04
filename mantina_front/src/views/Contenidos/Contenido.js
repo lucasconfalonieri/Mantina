@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "tss-react/mui";
 
-import Icon from "@material-ui/core/Icon";
+import Icon from "@mui/material/Icon";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
@@ -12,13 +12,13 @@ import GridItem from "components/Grid/GridItem.js";
 
 import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles()(styles);
 const useContenidoStyle = makeStyles(() => ({
     imgSize: {width: '100px', height: '100px'}
 }));
 
 const Contenido = ({ text_pdf, name_pdf }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const contenidoStyle = useContenidoStyle();
 
     return (

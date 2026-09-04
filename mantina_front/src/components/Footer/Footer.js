@@ -2,16 +2,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import Icon from "@material-ui/core/Icon";
+import { makeStyles } from "tss-react/mui";
+import Icon from "@mui/material/Icon";
 import {FaTwitter, FaFacebook, FaInstagram} from 'react-icons/fa'
 
 import styles from "assets/jss/material-dashboard-react/components/footerStyle.js";
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles()(styles);
 
 export default function Footer(props) {
-  const classes = useStyles();
+  const { classes } = useStyles();
   return (
 
     <footer className={classes.footer}>

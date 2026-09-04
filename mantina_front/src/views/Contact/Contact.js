@@ -1,7 +1,7 @@
 import React from "react";
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
+import { makeStyles } from "tss-react/mui";
+import InputLabel from "@mui/material/InputLabel";
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
@@ -11,14 +11,14 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
-import TextField from '@material-ui/core/TextField';
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Tooltip from "@material-ui/core/Tooltip";
-import Icon from "@material-ui/core/Icon";
+import TextField from '@mui/material/TextField';
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import Tooltip from "@mui/material/Tooltip";
+import Icon from "@mui/material/Icon";
 import {FaTwitter, FaFacebook, FaInstagram} from 'react-icons/fa'
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 import { sendEmail } from '../../utils/api';
 
@@ -46,14 +46,14 @@ const styles = {
     },
 };
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles()(styles);
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 export default function ContactForm() {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const [email, setEmail] = React.useState("");
   const [name, setName] = React.useState("");

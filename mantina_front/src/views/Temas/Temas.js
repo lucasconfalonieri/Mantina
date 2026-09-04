@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import GridContainer from "components/Grid/GridContainer.js";
 import Tema from 'views/Temas/Tema.js';
-import Skeleton from '@material-ui/lab/Skeleton';
-import Icon from "@material-ui/core/Icon";
+import Skeleton from '@mui/material/Skeleton';
+import Icon from "@mui/material/Icon";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardIcon from "components/Card/CardIcon.js";
 import GridItem from "components/Grid/GridItem.js";
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 
 import { getTemasByMateria } from '../../utils/api';
 
-import { Breadcrumbs, Link } from "@material-ui/core";
+import { Breadcrumbs, Link } from "@mui/material";
 
 export default function Temas(props) {
   const { id_subject_selected } = props;

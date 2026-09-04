@@ -1,7 +1,7 @@
 import React from "react";
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
+import { makeStyles } from "tss-react/mui";
+import InputLabel from "@mui/material/InputLabel";
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
@@ -11,7 +11,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
-import TextField from '@material-ui/core/TextField';
+import TextField from '@mui/material/TextField';
 
 
 const styles = {
@@ -36,12 +36,12 @@ const styles = {
 
 };
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles()(styles);
 
 
 
 export default function QuienesSomos() {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
     <div>

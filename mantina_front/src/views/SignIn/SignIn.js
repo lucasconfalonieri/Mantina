@@ -1,16 +1,16 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import { makeStyles } from 'tss-react/mui';
+import Container from '@mui/material/Container';
 import { postLogin } from '../../utils/api';
 import CardHeader from "components/Card/CardHeader.js";
-import Icon from "@material-ui/core/Icon";
+import Icon from "@mui/material/Icon";
 import loginImage from "../../assets/img/loginimg.png";
 
 function Copyright() {
@@ -23,7 +23,7 @@ function Copyright() {
   );
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignIn() {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const [user, setUser] = React.useState("");
   const [password, setPassword] = React.useState("");

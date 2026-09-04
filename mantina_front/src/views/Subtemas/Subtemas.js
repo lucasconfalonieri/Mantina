@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
-import Skeleton from '@material-ui/lab/Skeleton';
-import Icon from "@material-ui/core/Icon";
+import Skeleton from '@mui/material/Skeleton';
+import Icon from "@mui/material/Icon";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardIcon from "components/Card/CardIcon.js";
 import GridItem from "components/Grid/GridItem.js";
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
 
 import Subtema from 'views/Subtemas/Subtema.js';
 import { getSubtemasByTema } from '../../utils/api';

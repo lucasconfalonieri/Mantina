@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import AlumnosContenidos from 'views/Alumnos/AlumnosContenidos.js';
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 
 export default function AlumnosContenidosPagina() {
     const { id_studentTopics } = useParams();

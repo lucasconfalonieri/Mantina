@@ -1,8 +1,8 @@
 import React from 'react';
 import Materias from 'views/Materias/Materias.js';
 import MateriasTreeView from 'views/Materias/MateriasTreeView.js';
-import Button from '@material-ui/core/Button';
-import Icon from "@material-ui/core/Icon";
+import Button from '@mui/material/Button';
+import Icon from "@mui/material/Icon";
 
 export default function MateriasPagina() {
     const [showTreeView, setShowTreeView] = React.useState(JSON.parse(localStorage.getItem("showTreeView")));

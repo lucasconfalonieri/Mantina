@@ -6,7 +6,7 @@ import PerfectScrollbar from "perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 
 import "assets/css/material-dashboard-react.css";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "tss-react/mui";
 
 // components
 import Footer from "components/Footer/Footer.js";
@@ -31,16 +31,16 @@ import AuthRoute from "utils/AuthRoute.js";
 import ForgotPassword from "views/SignIn/ForgotPassword.js";
 import NewPassword from "views/SignIn/NewPassword.js";
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
 
 export default function App({ ...rest }) {
     let ps;
 
-    const useStyles = makeStyles(styles);
+    const useStyles = makeStyles()(styles);
 
-    const classes = useStyles();
+    const { classes } = useStyles();
 
     // ref to help us initialize PerfectScrollbar on windows devices
     const mainPanel = React.createRef();
