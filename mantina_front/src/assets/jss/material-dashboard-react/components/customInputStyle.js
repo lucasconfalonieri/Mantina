@@ -6,14 +6,14 @@ import {
   defaultFont
 } from "assets/jss/material-dashboard-react.js";
 
-const customInputStyle = {
+const customInputStyle = (theme, params, classes) => ({
   disabled: {
     "&:before": {
       backgroundColor: "transparent !important"
     }
   },
   underline: {
-    "&:hover:not($disabled):before,&:before": {
+    [`&:hover:not(.${classes.disabled}):before,&:before`]: {
       borderColor: grayColor[4] + " !important",
       borderWidth: "1px !important"
     },
@@ -65,6 +65,6 @@ const customInputStyle = {
     position: "relative",
     verticalAlign: "unset"
   }
-};
+});
 
 export default customInputStyle;

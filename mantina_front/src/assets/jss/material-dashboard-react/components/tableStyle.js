@@ -9,7 +9,7 @@ import {
   defaultFont
 } from "assets/jss/material-dashboard-react.js";
 
-const tableStyle = theme => ({
+const tableStyle = (theme, params, classes) => ({
   warningTableHeader: {
     color: warningColor[0]
   },
@@ -42,7 +42,7 @@ const tableStyle = theme => ({
   tableHeadCell: {
     color: "inherit",
     ...defaultFont,
-    "&, &$tableCell": {
+    [`&, &.${classes.tableCell}`]: {
       fontSize: "1em"
     }
   },

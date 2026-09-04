@@ -1,8 +1,8 @@
 import { hexToRgb, blackColor } from "assets/jss/material-dashboard-react.js";
 
-const cardAvatarStyle = {
+const cardAvatarStyle = (theme, params, classes) => ({
   cardAvatar: {
-    "&$cardAvatarProfile img": {
+    [`&.${classes.cardAvatarProfile} img`]: {
       width: "100%",
       height: "auto"
     }
@@ -22,11 +22,11 @@ const cardAvatarStyle = {
       ", 0.12), 0 8px 10px -5px rgba(" +
       hexToRgb(blackColor) +
       ", 0.2)",
-    "&$cardAvatarPlain": {
+    [`&.${classes.cardAvatarPlain}`]: {
       marginTop: "0"
     }
   },
   cardAvatarPlain: {}
-};
+});
 
 export default cardAvatarStyle;

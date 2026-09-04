@@ -11,7 +11,7 @@ import {
   hexToRgb
 } from "assets/jss/material-dashboard-react.js";
 
-const buttonStyle = {
+const buttonStyle = (theme, params, classes) => ({
   button: {
     minHeight: "auto",
     minWidth: "auto",
@@ -74,7 +74,7 @@ const buttonStyle = {
       marginRight: "4px",
       verticalAlign: "middle"
     },
-    "&$justIcon": {
+    [`&.${classes.justIcon}`]: {
       "& .fab,& .fas,& .far,& .fal,& .material-icons": {
         marginTop: "0px",
         position: "absolute",
@@ -232,32 +232,32 @@ const buttonStyle = {
       background: "transparent",
       boxShadow: "none"
     },
-    "&$rose": {
+    [`&.${classes.rose}`]: {
       "&,&:focus,&:hover,&:visited": {
         color: roseColor[0]
       }
     },
-    "&$primary": {
+    [`&.${classes.primary}`]: {
       "&,&:focus,&:hover,&:visited": {
         color: primaryColor[0]
       }
     },
-    "&$info": {
+    [`&.${classes.info}`]: {
       "&,&:focus,&:hover,&:visited": {
         color: infoColor[0]
       }
     },
-    "&$success": {
+    [`&.${classes.success}`]: {
       "&,&:focus,&:hover,&:visited": {
         color: successColor[0]
       }
     },
-    "&$warning": {
+    [`&.${classes.warning}`]: {
       "&,&:focus,&:hover,&:visited": {
         color: warningColor[0]
       }
     },
-    "&$danger": {
+    [`&.${classes.danger}`]: {
       "&,&:focus,&:hover,&:visited": {
         color: dangerColor[0]
       }
@@ -309,7 +309,7 @@ const buttonStyle = {
     "& .fab,& .fas,& .far,& .fal,& svg,& .material-icons": {
       marginRight: "0px"
     },
-    "&$lg": {
+    [`&.${classes.lg}`]: {
       height: "57px",
       minWidth: "57px",
       width: "57px",
@@ -323,7 +323,7 @@ const buttonStyle = {
         height: "32px"
       }
     },
-    "&$sm": {
+    [`&.${classes.sm}`]: {
       height: "30px",
       minWidth: "30px",
       width: "30px",
@@ -337,6 +337,6 @@ const buttonStyle = {
       }
     }
   }
-};
+});
 
 export default buttonStyle;

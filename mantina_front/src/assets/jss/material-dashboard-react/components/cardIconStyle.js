@@ -8,9 +8,9 @@ import {
   grayColor
 } from "assets/jss/material-dashboard-react.js";
 
-const cardIconStyle = {
+const cardIconStyle = (theme, params, classes) => ({
   cardIcon: {
-    "&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader": {
+    [`&.${classes.warningCardHeader}, &.${classes.successCardHeader}, &.${classes.dangerCardHeader}, &.${classes.infoCardHeader}, &.${classes.primaryCardHeader}, &.${classes.roseCardHeader}`]: {
       borderRadius: "3px",
       backgroundColor: grayColor[0],
       padding: "15px",
@@ -25,6 +25,6 @@ const cardIconStyle = {
   infoCardHeader,
   primaryCardHeader,
   roseCardHeader
-};
+});
 
 export default cardIconStyle;
