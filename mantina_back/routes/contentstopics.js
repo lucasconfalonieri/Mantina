@@ -10,7 +10,7 @@ router.get('/:idTopic', function(req, res, next) {
     const { idTopic } = req.params;
     var response;
     
-    dbConn.query('SELECT id_content_topic , name_pdf , text_pdf FROM contentstopics WHERE id_topicc = ?', [idTopic] ,function(err,rows)     {
+    dbConn.query('SELECT id_content_topic , name_pdf , text_pdf FROM contentstopics WHERE id_topicc = ? ORDER BY contentstopics.order asc', [idTopic] ,function(err,rows)     {
     
             if(err) {
                 res.status(409).json({

@@ -26,7 +26,7 @@ const { ensureToken , isLoggedIn} = require('../core/auth');
 router.get('/:idSubject', function(req, res, next) {
  const { idSubject } = req.params;
 var response;
-dbConn.query('SELECT id_topic, name FROM topics WHERE id_subject = ?', [idSubject] ,function(err,rows)     {
+dbConn.query('SELECT id_topic, name FROM topics WHERE id_subject = ? ORDER BY topics.order asc', [idSubject] ,function(err,rows)     {
 
         if(err) {
             res.status(409).json({

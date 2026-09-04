@@ -20,7 +20,7 @@ const { ensureToken } = require('../core/auth');
 router.get('/', function(req, res, next) {
     
     
-    dbConn.query('SELECT * FROM subjects',function(err,rows)     {
+    dbConn.query('SELECT * FROM subjects ORDER BY subjects.order asc',function(err,rows)     {
 
         if(err) {
             res.status(409).json({
