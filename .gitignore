@@ -5,6 +5,7 @@
 !.env.example
 *.log
 *.sql
+mantina_back/storage/pdfs/
 
 # node
 node_modules/
