@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { arrayMove, SortableContext, verticalListSortingStrategy, useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -8,29 +11,37 @@ import TemaAlumno from 'views/Alumnos/TemaAlumno.js';
 import { getTemasAlumnos, changeOrderStudentTopic} from '../../utils/api';
 import Button from "components/CustomButtons/Button.js";
 
-import List from 'react-smooth-draggable-list';
+function SortableTemaAlumno({ id, name, id_studenttopic, order }) {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  return (
+    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+      <TemaAlumno
+        name={name}
+        id_studenttopic={id_studenttopic}
+        order={order}
+      />
+    </div>
+  );
+}
 
 function TemasAlumnos(props) {
   const [temasArray, setTemasArray] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [order, setOrder] = useState([]);
+  const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 8 } }));
 
   useEffect(() => {
     let active = true;
 
     getTemasAlumnos()
       .then(json => {
-        const temas = [];
-        const orden = [];
-        json.data.studenttopics.forEach(result => {
-          temas.push(result);
-          orden.push(result.order);
-        });
-
-        temas.push("agregar");
+        const temas = json.data.studenttopics;
 
         if (active) {
-          setOrder(orden);
           setTemasArray(temas);
           setLoading(false);
         }
@@ -42,45 +53,37 @@ function TemasAlumnos(props) {
     return () => { active = false; };
   }, []);
 
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
+    if (over && active.id !== over.id) {
+      setTemasArray((items) => {
+        const oldIndex = items.findIndex(t => t.id_studenttopics === active.id);
+        const newIndex = items.findIndex(t => t.id_studenttopics === over.id);
+        return arrayMove(items, oldIndex, newIndex);
+      });
+    }
+  };
+
   const renderTemas = () => {
-    return <List
-      rowHeight={100}
-      rowWidth={3000}
-      order={order}
-      onReOrder={setOrder}
-    >{
-        temasArray.map(tema => {
-          const { name, id_studenttopics, order } = tema;
-
-          if (tema != "agregar") {
-            return (
-              <List.Item>
-                <TemaAlumno
-                  name={name}
-                  id_studenttopic={id_studenttopics}
-                  order={order}
-                />
-              </List.Item>
-            );
-          } else {
-            return (
-              <br/>
-            )
-          }
-        })
-      }
-
-    </List>
+    return (
+      <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+        <SortableContext items={temasArray.map(t => t.id_studenttopics)} strategy={verticalListSortingStrategy}>
+          {temasArray.map(tema => (
+            <SortableTemaAlumno
+              key={tema.id_studenttopics}
+              id={tema.id_studenttopics}
+              name={tema.name}
+              id_studenttopic={tema.id_studenttopics}
+              order={tema.order}
+            />
+          ))}
+        </SortableContext>
+      </DndContext>
+    );
   }
 
   const handleClickOrder = (e) => {
-    const auxTemasArray = [];
-    temasArray.map(tema => {
-      if (tema != "agregar") {
-        tema.order = order.indexOf(tema.order);
-        auxTemasArray.push(tema);
-      }
-    });
+    const auxTemasArray = temasArray.map((tema, index) => ({ ...tema, order: index }));
     changeOrderStudentTopic(JSON.stringify({"studentTopics": auxTemasArray }))
             .then(success => {
               window.location.reload();
@@ -113,4 +116,3 @@ function TemasAlumnos(props) {
 }
 
 export default TemasAlumnos;
-

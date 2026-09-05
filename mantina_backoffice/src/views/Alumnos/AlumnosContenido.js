@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { arrayMove, SortableContext, verticalListSortingStrategy, useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -7,31 +10,42 @@ import AgregarContenidoAlumnoView from 'views/Alumnos/AgregarContenidoAlumnoView
 import AlumnoContenido from 'views/Alumnos/AlumnoContenido.js';
 import { getContenidosByStudentTopic, changeOrderStudentContent } from '../../utils/api';
 import Button from "components/CustomButtons/Button.js";
-import List from 'react-smooth-draggable-list';
+
+function SortableAlumnoContenido({ id, text_pdf, name_pdf, id_studentcontent, id_studenttopic, order }) {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  return (
+    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+      <AlumnoContenido
+        text_pdf={text_pdf}
+        name_pdf={name_pdf}
+        id_studentcontent={id_studentcontent}
+        id_studenttopic={id_studenttopic}
+        order={order}
+      />
+    </div>
+  );
+}
 
 function AlumnosContenido(props) {
   const { id_studenttopic_selected } = props;
   const [contenidosArray, setContenidosArray] = useState([]);
   const [tema, setTema] = useState("");
   const [loading, setLoading] = useState(true);
-  const [order, setOrder] = useState([]);
+  const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 8 } }));
 
   useEffect(() => {
     let active = true;
 
     getContenidosByStudentTopic(id_studenttopic_selected)
       .then(json => {
-        const contenidos = [];
-        const orden = [];
-        json.data.studentcontents.forEach(result => {
-          contenidos.push(result);
-          orden.push(result.order);
-        });
-
-        contenidos.push("agregar");
+        const contenidos = json.data.studentcontents;
 
         if (active) {
-          setOrder(orden);
           setContenidosArray(contenidos);
           setLoading(false);
         }
@@ -43,14 +57,19 @@ function AlumnosContenido(props) {
     return () => { active = false; };
   }, [id_studenttopic_selected]);
 
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
+    if (over && active.id !== over.id) {
+      setContenidosArray((items) => {
+        const oldIndex = items.findIndex(c => c.id_studentcontent === active.id);
+        const newIndex = items.findIndex(c => c.id_studentcontent === over.id);
+        return arrayMove(items, oldIndex, newIndex);
+      });
+    }
+  };
+
   const handleClickOrder = (e) => {
-    const auxContenidosArray = [];
-    contenidosArray.map(contenido => {
-      if (contenido != "agregar") {
-        contenido.order = order.indexOf(contenido.order);
-        auxContenidosArray.push(contenido);
-      }
-    });
+    const auxContenidosArray = contenidosArray.map((contenido, index) => ({ ...contenido, order: index }));
     changeOrderStudentContent(JSON.stringify({"studentContents": auxContenidosArray }))
             .then(success => {
               window.location.reload();
@@ -61,36 +80,23 @@ function AlumnosContenido(props) {
   };
 
   const renderContenidos = () => {
-    return <List
-      rowHeight={100}
-      rowWidth={3000}
-      order={order}
-      onReOrder={setOrder}
-    >{
-      contenidosArray.map(contenido => {
-          const { text_pdf,name_pdf, id_studentcontent, order } = contenido;
-
-          if (contenido != "agregar") {
-            return (
-              <List.Item>
-                <AlumnoContenido
-                  text_pdf={text_pdf}
-                  name_pdf={name_pdf}
-                  id_studentcontent={id_studentcontent}
-                  id_studenttopic={id_studenttopic_selected}
-                  order={order}
-                />
-              </List.Item>
-            );
-          } else {
-            return (
-              <br/>
-            )
-          }
-        })
-      }
-
-    </List>
+    return (
+      <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+        <SortableContext items={contenidosArray.map(c => c.id_studentcontent)} strategy={verticalListSortingStrategy}>
+          {contenidosArray.map(contenido => (
+            <SortableAlumnoContenido
+              key={contenido.id_studentcontent}
+              id={contenido.id_studentcontent}
+              text_pdf={contenido.text_pdf}
+              name_pdf={contenido.name_pdf}
+              id_studentcontent={contenido.id_studentcontent}
+              id_studenttopic={id_studenttopic_selected}
+              order={contenido.order}
+            />
+          ))}
+        </SortableContext>
+      </DndContext>
+    );
   }
 
   const renderAgregar = () => {
