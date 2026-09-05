@@ -8,8 +8,8 @@ export default function ContenidosPagina() {
   const { id_topic } = useParams();
       // match -> parametro que viene en la URL
       // location -> parametros que vienen cuando armarmos el link to (desde TEMA).
-      const { state = {} } = useLocation();
-      const { id_content_topic, name_pdf, text_pdf, name_img } = state;
+      const { state } = useLocation();
+      const { id_content_topic, name_pdf, text_pdf, name_img } = state || {};
 
     const handleBack = (e) => {
         window.history.back();

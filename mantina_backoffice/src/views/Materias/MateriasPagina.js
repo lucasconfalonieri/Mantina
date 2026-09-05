@@ -5,8 +5,8 @@ import Button from '@mui/material/Button';
 import Icon from "@mui/material/Icon";
 
 export default function MateriasPagina() {
-       const { state = {} } = useLocation();
-       const { name, id_subject } = state;
+       const { state } = useLocation();
+       const { name, id_subject } = state || {};
 
   return (
     <div>

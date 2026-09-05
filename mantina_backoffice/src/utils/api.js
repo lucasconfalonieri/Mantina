@@ -105,7 +105,8 @@ export function postLogin(body) {
 
 export function postRegister(body) {
     return axios.post(BASE_URL + '/login/signup', body, {
-        headers: {'Content-Type': 'application/json' }
+        headers: {'Content-Type': 'application/json',
+        'Authorization' : 'Bearer ' + JSON.parse(localStorage.getItem('token'))}
       });
 }
 

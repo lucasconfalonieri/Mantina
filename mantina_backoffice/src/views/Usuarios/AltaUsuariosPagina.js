@@ -6,7 +6,7 @@ import { makeStyles } from 'tss-react/mui';
 import Container from '@mui/material/Container';
 import { postRegister } from '../../utils/api';
 import MuiAlert from '@mui/material/Alert';
-import { TextField, InputAdornment, IconButton } from "@mui/material";
+import { TextField, InputAdornment, IconButton, FormControlLabel, Checkbox } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Snackbar from '@mui/material/Snackbar';
@@ -41,14 +41,15 @@ export default function UsuariosPagina() {
   const { id_user } = useParams();
   // match -> parametro que viene en la URL
   // location -> parametros que vienen cuando armarmos el link to (desde usuarios pagina).
-  const { state = {} } = useLocation();
-  const { nameResponse, emailResponse } = state;
+  const { state } = useLocation();
+  const { nameResponse, emailResponse, isAdminResponse } = state || {};
 
   const { classes } = useStyles();
 
   const [email, setEmail] = React.useState(emailResponse);
   const [password, setPassword] = React.useState("");
   const [name, setName] = React.useState(nameResponse);
+  const [isAdmin, setIsAdmin] = React.useState(!!isAdminResponse);
   const [emailError, setEmailError] = React.useState(false);
   const [passwordError, setPasswordError] = React.useState(false);
   const [nameError, setNameError] = React.useState(false);
@@ -120,13 +121,12 @@ export default function UsuariosPagina() {
       }
 
       if (hasNoErrors) {
-        postRegister(JSON.stringify({ 'user': email, 'password': password, 'name': name })).then(response => {
-          localStorage.setItem("token", JSON.stringify(response.data.auth.token));
-          localStorage.setItem("setupTime", new Date().getTime())
+        postRegister(JSON.stringify({ 'user': email, 'password': password, 'name': name, 'is_admin': isAdmin })).then(response => {
           setOpenSuccess(true);
           setPassword("");
           setEmail("");
           setName("");
+          setIsAdmin(false);
         }).catch(error => {
           if (error.response.status == 903) {
             setTextError("El email ya se encuentra registado.");
@@ -140,7 +140,7 @@ export default function UsuariosPagina() {
     } else {
       // esta editando
       if (hasNoErrors) {
-        editUser(id_user, JSON.stringify({ 'name': name, 'email': email })).then(response => {
+        editUser(id_user, JSON.stringify({ 'name': name, 'email': email, 'is_admin': isAdmin })).then(response => {
           setOpenSuccess(true);
           
           setEmail("");
@@ -260,6 +260,17 @@ export default function UsuariosPagina() {
               }}
               error={passwordError}
               helperText={passwordError ? 'La contraseña debe tener: minimo 8 caracteres y al menos 1 caracter numerico.' : ' '}
+            />
+
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={isAdmin}
+                  onChange={(e) => setIsAdmin(e.target.checked)}
+                  color="primary"
+                />
+              }
+              label="Es administrador (acceso al panel de carga)"
             />
 
             <Button

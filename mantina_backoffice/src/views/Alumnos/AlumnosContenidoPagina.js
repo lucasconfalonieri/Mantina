@@ -9,8 +9,8 @@ export default function AlumnosContenidoPagina() {
 
       // match -> parametro que viene en la URL
       // location -> parametros que vienen cuando armarmos el link to (desde TEMA).
-      const { state = {} } = useLocation();
-      const { id_content, name_pdf, text_pdf, name_img } = state;
+      const { state } = useLocation();
+      const { id_content, name_pdf, text_pdf, name_img } = state || {};
 
     const handleBack = (e) => {
         window.history.back();

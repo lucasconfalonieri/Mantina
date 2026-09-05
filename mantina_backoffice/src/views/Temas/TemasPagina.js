@@ -8,8 +8,8 @@ export default function TemasPagina() {
     const { id_subject } = useParams();
     // match -> parametro que viene en la URL
     // location -> parametros que vienen cuando armarmos el link to (desde TEMA).
-    const { state = {} } = useLocation();
-    const { name, id_topic } = state;
+    const { state } = useLocation();
+    const { name, id_topic } = state || {};
 
     const handleBack = (e) => {
         window.history.back();

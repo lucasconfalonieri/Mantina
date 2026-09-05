@@ -50,22 +50,22 @@ function TablePaginationActions(props) {
 
   const { classes } = useStyles1();
   const theme = useTheme();
-  const { count, page, rowsPerPage, onChangePage } = props;
+  const { count, page, rowsPerPage, onPageChange } = props;
 
   const handleFirstPageButtonClick = (event) => {
-    onChangePage(event, 0);
+    onPageChange(event, 0);
   };
 
   const handleLastPageButtonClick = (event) => {
-    onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+    onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
   };
 
   const handleBackButtonClick = (event) => {
-    onChangePage(event, page - 1);
+    onPageChange(event, page - 1);
   };
 
   const handleNextButtonClick = (event) => {
-    onChangePage(event, page + 1);
+    onPageChange(event, page + 1);
   };
 
   return (
@@ -100,7 +100,7 @@ function TablePaginationActions(props) {
 
 TablePaginationActions.propTypes = {
   count: PropTypes.number.isRequired,
-  onChangePage: PropTypes.func.isRequired,
+  onPageChange: PropTypes.func.isRequired,
   page: PropTypes.number.isRequired,
   rowsPerPage: PropTypes.number.isRequired,
 };
@@ -137,12 +137,12 @@ export default function CustomPaginationActionsTable() {
     }
   })
 
-  const createData = (id, name, email) => {
-    return { id, name, email }
+  const createData = (id, name, email, is_admin) => {
+    return { id, name, email, is_admin }
   }
 
   const setDataToRow = (usersFromDB) => {
-    setRow(usersFromDB.map((users) => createData(users.id_user, users.name, users.email)))
+    setRow(usersFromDB.map((users) => createData(users.id_user, users.name, users.email, users.is_admin)))
   }
 
   const handleCloseAlert = (event, reason) => {
@@ -232,12 +232,17 @@ export default function CustomPaginationActionsTable() {
                         {row.email}
                       </TableCell>
 
+                      <TableCell component="th" scope="row">
+                        {row.is_admin ? "Administrador" : "-"}
+                      </TableCell>
+
                       <TableCell style={{ width: 40 }} align="right">
                         <Link to={{
                           pathname: "/editarUsuario/" + row.id,
                           state: {
                             nameResponse: row.name,
-                            emailResponse: row.email
+                            emailResponse: row.email,
+                            isAdminResponse: row.is_admin
                           }
                         }}>
                           <IconButton aria-label="edit user">
@@ -279,8 +284,8 @@ export default function CustomPaginationActionsTable() {
                       }}
                       labelRowsPerPage= {"Resultados por página:"}
                       
-                      onChangePage={handleChangePage}
-                      onChangeRowsPerPage={handleChangeRowsPerPage}
+                      onPageChange={handleChangePage}
+                      onRowsPerPageChange={handleChangeRowsPerPage}
                       ActionsComponent={TablePaginationActions}
                     />
                   </TableRow>
