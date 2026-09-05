@@ -10,10 +10,6 @@ export function getTemasByMateria(id_subject) {
     return axios.get(BASE_URL + '/topics/' + id_subject);
 }
 
-export function getSubtemasByTema(id_topic) {
-    return axios.get(BASE_URL + '/subtopics/' + id_topic);
-}
-
 export function getContenidosByTema(id_topic) {
     return axios.get(BASE_URL + '/contentstopics/' + id_topic);
 }
