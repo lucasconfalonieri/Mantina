@@ -51,9 +51,9 @@ export default function ForgotPassword() {
   const [textError, setTextError] = React.useState("");
   const [emailError, setEmailError] = React.useState(false);
 
-  function Alert(props) {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
- }
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
 
   const handleCloseSuccess = (event, reason) => {
     if (reason === 'clickaway') {

@@ -53,9 +53,9 @@ export default function NewPassword() {
   const [openError, setOpenError] = React.useState(false);
   const [textError, setTextError] = React.useState("");
 
-  function Alert(props) {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
- }
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
 
   const handleCloseSuccess = (event, reason) => {
     if (reason === 'clickaway') {
