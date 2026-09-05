@@ -2,9 +2,7 @@ import React from 'react';
 import TemasAlumnos from 'views/Alumnos/TemasAlumnos.js';
 
 
-export default function AlumnosPagina({location}) {
-       const { state = {} } = location;
-
+export default function AlumnosPagina() {
       return (
         <div>
             <h2>

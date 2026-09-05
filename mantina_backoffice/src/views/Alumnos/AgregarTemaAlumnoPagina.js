@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -55,9 +56,9 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-export default function AgregarTemaAlumnoPagina({ match }) {
+export default function AgregarTemaAlumnoPagina() {
 
-  const { id_studenttopic, name } = match.params;
+  const { id_studenttopic, name } = useParams();
 
   const classes = useStyles();
 
@@ -302,7 +303,7 @@ return (
 
       <Snackbar
         anchorOrigin={{
-          vertical: "center",
+          vertical: "top",
           horizontal: "center"
         }}
         open={openError} autoHideDuration={6000} onClose={handleCloseError}>
@@ -313,7 +314,7 @@ return (
 
       <Snackbar
         anchorOrigin={{
-          vertical: "center",
+          vertical: "top",
           horizontal: "center"
         }}
         open={openSuccess} autoHideDuration={6000} onClose={handleCloseSuccess}>

@@ -1,34 +1,28 @@
-import React from "react";
-import {  Route, Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
-class AuthRoute extends React.Component {
+function AuthRoute({ children }) {
+    //CHECK THE EXPIRATION TIME
+    var isAuthenticated = false;
+    var hours = 1; // Reset when storage is more than 24hours
+    var now = new Date().getTime();
+    var setupTime = localStorage.getItem('setupTime');
 
-    render() {
-        const props = this.props;
-
-        //CHECK THE EXPIRATION TIME
-        var isAuthenticated = false;
-        var hours = 1; // Reset when storage is more than 24hours
-        var now = new Date().getTime();
-        var setupTime = localStorage.getItem('setupTime');
-
-        if (setupTime == null) {
+    if (setupTime == null) {
+        isAuthenticated = false
+    } else {
+        //si esta expirado
+        if(now - setupTime > hours*60*60*1000) {
+            localStorage.clear()
             isAuthenticated = false
         } else {
-            //si esta expirado
-            if(now - setupTime > hours*60*60*1000) {
-                localStorage.clear()
-                isAuthenticated = false
-            } else {
-                isAuthenticated = localStorage.getItem('token');
-            }
+            isAuthenticated = localStorage.getItem('token');
         }
+    }
 
-        if ( isAuthenticated ) {
-             return <Route {...props} />;
-        } else {
-             return <Redirect to="/login"/>;
-        }
+    if ( isAuthenticated ) {
+        return children;
+    } else {
+        return <Navigate to="/login" replace/>;
     }
 }
 

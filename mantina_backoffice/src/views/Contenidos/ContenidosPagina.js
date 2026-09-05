@@ -1,13 +1,14 @@
 import React from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import Contenidos from 'views/Contenidos/Contenidos.js';
 import Button from '@material-ui/core/Button';
 import Icon from "@material-ui/core/Icon";
 
-export default function ContenidosPagina({ match, location }) {
-  const id_topic = match.params.id_topic;
+export default function ContenidosPagina() {
+  const { id_topic } = useParams();
       // match -> parametro que viene en la URL
       // location -> parametros que vienen cuando armarmos el link to (desde TEMA).
-      const { state = {} } = location;
+      const { state = {} } = useLocation();
       const { id_content_topic, name_pdf, text_pdf, name_img } = state;
 
     const handleBack = (e) => {

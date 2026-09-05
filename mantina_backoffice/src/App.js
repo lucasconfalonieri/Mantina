@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 // creates a beautiful scrollbar
 import "perfect-scrollbar/css/perfect-scrollbar.css";
@@ -69,33 +69,33 @@ export default function App({ ...rest }) {
 
                 <div className={classes.content}>
                     <div className={classes.container}>
-                        <Switch>
-                            <AuthRoute path='/visor/:name_pdf' component={VisorPdfPagina} />
+                        <Routes>
+                            <Route path='/visor/:name_pdf' element={<AuthRoute><VisorPdfPagina /></AuthRoute>} />
 
-                            <AuthRoute path='/editarContenido/' component={ContenidosPagina} />
-                            <AuthRoute path='/contenidos/:id_topic' component={ContenidosPagina} />
+                            <Route path='/editarContenido/' element={<AuthRoute><ContenidosPagina /></AuthRoute>} />
+                            <Route path='/contenidos/:id_topic' element={<AuthRoute><ContenidosPagina /></AuthRoute>} />
 
-                            <AuthRoute path='/editarTema/' component={TemasPagina} />
-                            <AuthRoute path='/temas/:id_subject' component={TemasPagina} />
+                            <Route path='/editarTema/' element={<AuthRoute><TemasPagina /></AuthRoute>} />
+                            <Route path='/temas/:id_subject' element={<AuthRoute><TemasPagina /></AuthRoute>} />
 
-                            <AuthRoute path='/eliminarMateria/' component={MateriasPagina} />
-                            <AuthRoute path='/editarMateria/' component={MateriasPagina} />
-                            <AuthRoute path='/materias' component={MateriasPagina} />
+                            <Route path='/eliminarMateria/' element={<AuthRoute><MateriasPagina /></AuthRoute>} />
+                            <Route path='/editarMateria/' element={<AuthRoute><MateriasPagina /></AuthRoute>} />
+                            <Route path='/materias' element={<AuthRoute><MateriasPagina /></AuthRoute>} />
 
-                            <AuthRoute path='/editarContenidoAlumno/:id_studenttopic/:id_studentcontent/:text_pdf' component={AgregarContenidoAlumnoPagina} />
-                            <AuthRoute path='/agregarContenidoAlumno/:id_studenttopic' component={AgregarContenidoAlumnoPagina} />
-                            <AuthRoute path='/contenidosAlumno/:id_studenttopic' component={ContenidoAlumnosPagina} />
-                            <AuthRoute path='/editarTemaAlumno/:id_studenttopic/:name' component={AgregarTemaAlumnoPagina} />
-                            <AuthRoute path='/agregarTemaAlumno' component={AgregarTemaAlumnoPagina} />
-                            <AuthRoute path='/alumnos' component={AlumnosPagina} />
+                            <Route path='/editarContenidoAlumno/:id_studenttopic/:id_studentcontent/:text_pdf' element={<AuthRoute><AgregarContenidoAlumnoPagina /></AuthRoute>} />
+                            <Route path='/agregarContenidoAlumno/:id_studenttopic' element={<AuthRoute><AgregarContenidoAlumnoPagina /></AuthRoute>} />
+                            <Route path='/contenidosAlumno/:id_studenttopic' element={<AuthRoute><ContenidoAlumnosPagina /></AuthRoute>} />
+                            <Route path='/editarTemaAlumno/:id_studenttopic/:name' element={<AuthRoute><AgregarTemaAlumnoPagina /></AuthRoute>} />
+                            <Route path='/agregarTemaAlumno' element={<AuthRoute><AgregarTemaAlumnoPagina /></AuthRoute>} />
+                            <Route path='/alumnos' element={<AuthRoute><AlumnosPagina /></AuthRoute>} />
 
-                            <AuthRoute path='/usuarios' component={UsuariosPagina} />
-                            <AuthRoute path='/altaUsuarios' component={AltaUsuariosPagina} />
-                            <AuthRoute path='/editarUsuario/:id_user' component={AltaUsuariosPagina} />
-                            
-                            <Route path='/login' component={SignInPagina} />
-                            <Redirect from="/" to="/materias" />
-                        </Switch>
+                            <Route path='/usuarios' element={<AuthRoute><UsuariosPagina /></AuthRoute>} />
+                            <Route path='/altaUsuarios' element={<AuthRoute><AltaUsuariosPagina /></AuthRoute>} />
+                            <Route path='/editarUsuario/:id_user' element={<AuthRoute><AltaUsuariosPagina /></AuthRoute>} />
+
+                            <Route path='/login' element={<SignInPagina />} />
+                            <Route path='*' element={<Navigate to="/materias" replace />} />
+                        </Routes>
                     </div>
                 </div>
             </BrowserRouter>

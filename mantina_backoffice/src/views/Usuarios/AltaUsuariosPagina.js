@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
@@ -36,11 +37,11 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-export default function UsuariosPagina({ match, location }) {
-  const id_user = match.params.id_user;
+export default function UsuariosPagina() {
+  const { id_user } = useParams();
   // match -> parametro que viene en la URL
   // location -> parametros que vienen cuando armarmos el link to (desde usuarios pagina).
-  const { state = {} } = location;
+  const { state = {} } = useLocation();
   const { nameResponse, emailResponse } = state;
 
   const classes = useStyles();
@@ -177,7 +178,7 @@ export default function UsuariosPagina({ match, location }) {
         <div className={classes.paper}>
           <Snackbar
             anchorOrigin={{
-              vertical: "center",
+              vertical: "top",
               horizontal: "center"
             }}
             open={openError} autoHideDuration={6000} onClose={handleCloseError}>
@@ -188,7 +189,7 @@ export default function UsuariosPagina({ match, location }) {
 
           <Snackbar
             anchorOrigin={{
-              vertical: "center",
+              vertical: "top",
               horizontal: "center"
             }}
             open={openSuccess} autoHideDuration={6000} onClose={handleCloseSuccess}>

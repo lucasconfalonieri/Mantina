@@ -1,13 +1,14 @@
 import React from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import Subtemas from 'views/Subtemas/Subtemas.js';
 import Button from '@material-ui/core/Button';
 import Icon from "@material-ui/core/Icon";
 
-export default function SubtemasPagina({ match, location }) {
-    const id_topic = match.params.id_topic;
+export default function SubtemasPagina() {
+    const { id_topic } = useParams();
     // match -> parametro que viene en la URL
     // location -> parametros que vienen cuando armarmos el link to (desde TEMA).
-    const { state = {} } = location;
+    const { state = {} } = useLocation();
     const { name, id_subtopic } = state;
 
     const handleBack = (e) => {
