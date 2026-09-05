@@ -45,6 +45,7 @@ function Materias(props) {
       if (materia != "agregar") {
         return (
           <Materia
+            key={id_subject}
             name={name}
             id_subject={id_subject}
           />
@@ -52,6 +53,7 @@ function Materias(props) {
       } else {
         return (
           <AgregarMateria
+            key="agregar"
             name={props.name}
             id_subject={props.id_subject}
           />

@@ -41,6 +41,7 @@ function Contenidos(props) {
       if (contenido != "agregar") {
         return (
           <Contenido
+            key={id_content_topic}
             text_pdf={text_pdf}
             name_pdf={name_pdf}
             id_content_topic={id_content_topic}
@@ -49,6 +50,7 @@ function Contenidos(props) {
         );
       } else {
         return (<AgregarContenido
+          key="agregar"
           id_content_topic={props.id_content_topic}
           id_topic={id_topic_selected}
           name_pdf={props.name_pdf}

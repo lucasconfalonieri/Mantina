@@ -41,6 +41,7 @@ function Temas(props) {
       if (tema != "agregar") {
         return (
           <Tema
+            key={id_topic}
             name={name}
             id_subject={id_subject_selected}
             id_topic={id_topic}
@@ -49,6 +50,7 @@ function Temas(props) {
       } else {
         return (
           <AgregarTema
+            key="agregar"
             name={props.name}
             id_subject={id_subject_selected}
             id_topic={props.id_topic}
