@@ -14,7 +14,7 @@ router.get('/', ensureToken, function(req, res, next) {
           });
         } else {
 
-    dbConn.query('SELECT id_user, name, user FROM users',function(err,users)     {
+    dbConn.query('SELECT id_user, name, user, is_admin FROM users',function(err,users)     {
 
         if(err) {
             res.status(409).json({
@@ -27,10 +27,10 @@ router.get('/', ensureToken, function(req, res, next) {
           var usersPrivileges=[];
           users.forEach(user => {
               var userCustom = {"id_user": user.id_user, "name": user.name, "email": user.user,
-               "has_privileges": false };
+               "is_admin": !!user.is_admin, "has_privileges": false };
 
               usersPrivileges.push(userCustom)
-              
+
           });
 
 
@@ -52,13 +52,14 @@ router.put('/:idUser',ensureToken, function(req, res, next) {
       } else {
           const { email } = req.body;
           const { name } = req.body;
+          const { is_admin } = req.body;
           const { idUser } = req.params;
           const query = `
-          UPDATE users SET  name = ? , user = ?
+          UPDATE users SET  name = ? , user = ?, is_admin = ?
           WHERE id_user = ?;
           `;
 
-          dbConn.query(query,[ name , email, idUser ], function(err,rows)     {
+          dbConn.query(query,[ name , email, is_admin ? 1 : 0, idUser ], function(err,rows)     {
               if(err) {
                   res.status(409).json({
                       status: 'error',

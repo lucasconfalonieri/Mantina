@@ -7,11 +7,7 @@ const { sendEmail } = require('../core/EmailUtils');
 const { ensureToken, validate} = require('../core/auth');
 
 router.post('/signup', passport.authenticate('local.signup', {}), function (req, res) {
-  const userId = { id: res.id_user };
-  const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
-    expiresIn: 60 * 60
-  });
-  res.json({ auth: { token } });
+  res.json({ status: 'User created' });
 });
 
 router.post('/signin',
@@ -33,7 +29,7 @@ router.post('/signina',
   passport.authenticate('local.signin', {}),
   function (req, res) {
     const userId = { id: req.session.passport.user.id_user };
-    if (userId.id == 19 || userId.id ==20) {
+    if (req.session.passport.user.is_admin) {
       const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
         expiresIn: 60 * 60
       });

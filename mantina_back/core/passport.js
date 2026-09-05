@@ -1,8 +1,28 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const jwt = require('jsonwebtoken');
 
 var dbConn  = require('./DataBaseManager');
 const helpers = require('./helpers');
+
+// Only an already-authenticated admin's own request may grant is_admin to a
+// user being created - otherwise anyone hitting the public /login/signup
+// endpoint could self-elevate to backoffice access.
+function callerIsAdmin(req) {
+  return new Promise((resolve) => {
+    const authHeader = req.headers['authorization'];
+    if (!authHeader) return resolve(false);
+
+    const token = authHeader.split(' ')[1];
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+      if (err || !decoded || !decoded.userId || !decoded.userId.id) return resolve(false);
+
+      dbConn.query('SELECT is_admin FROM users WHERE id_user = ?', [decoded.userId.id], (err, rows) => {
+        resolve(!err && rows.length > 0 && !!rows[0].is_admin);
+      });
+    });
+  });
+}
 
 
 passport.use('local.signin', new LocalStrategy({
@@ -42,16 +62,18 @@ passport.use('local.signup', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
   }, async (req, user, password, done) => {
-    const { name } = req.body;
+    const { name, is_admin } = req.body;
+    const isAdminGranted = is_admin && await callerIsAdmin(req);
     let newUser = {
         name,
         user,
-        password
+        password,
+        is_admin: isAdminGranted ? 1 : 0
     };
     newUser.password = await helpers.encryptPassword(password);
 
-    const query = ` INSERT INTO users (user, password, name ) VALUES (?, ?, ?)`;
-    const result = dbConn.query(query,[newUser.user , newUser.password , newUser.name], function(err,rows) {
+    const query = ` INSERT INTO users (user, password, name, is_admin ) VALUES (?, ?, ?, ?)`;
+    const result = dbConn.query(query,[newUser.user , newUser.password , newUser.name, newUser.is_admin], function(err,rows) {
       if(err) { 
         err = new Error('UNIQE USERNAME');
         err.status = 903;
