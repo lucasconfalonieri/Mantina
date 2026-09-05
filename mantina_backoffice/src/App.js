@@ -16,7 +16,6 @@ import ContenidoAlumnosPagina from "views/Alumnos/AlumnosContenidoPagina.js";
 import AlumnosPagina from "views/Alumnos/AlumnosPagina.js";
 import MateriasPagina from "views/Materias/MateriasPagina.js";
 import TemasPagina from "views/Temas/TemasPagina.js";
-import SubtemasPagina from "views/Subtemas/SubtemasPagina.js";
 import ContenidosPagina from "views/Contenidos/ContenidosPagina.js";
 import VisorPdfPagina from "views/PdfViewer/VisorPdfPagina.js";
 import SignInPagina from "views/SignIn/SignIn.js";

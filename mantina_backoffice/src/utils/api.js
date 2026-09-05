@@ -53,31 +53,6 @@ export function deleteTema(id_tema) {
       });
 }
 
-export function getSubtemasByTema(id_topic) {
-    return axios.get(BASE_URL + '/subtopics/' + id_topic);
-}
-
-export function saveSubtema(body) {
-    return axios.post(BASE_URL + '/subtopics', body, {
-        headers: {'Content-Type': 'application/json',
-        'Authorization' : 'Bearer ' + JSON.parse(localStorage.getItem('token'))}
-      });
-}
-
-export function updateSubtema(id_subtema, body) {
-    return axios.put(BASE_URL + '/subtopics/' + id_subtema, body, {
-        headers: {'Content-Type': 'application/json',
-        'Authorization' : 'Bearer ' + JSON.parse(localStorage.getItem('token'))}
-      });
-}
-
-export function deleteSubtema(id_subtema) {
-    return axios.delete(BASE_URL + '/subtopics/' + id_subtema, {
-        headers: {
-        'Authorization' : 'Bearer ' + JSON.parse(localStorage.getItem('token'))}
-      });
-}
-
 export function getContenidosByTema(id_topic) {
     return axios.get(BASE_URL + '/contentstopics/' + id_topic);
 }
