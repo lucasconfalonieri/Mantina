@@ -1,8 +1,8 @@
 import React from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import Subtemas from 'views/Subtemas/Subtemas.js';
-import Button from '@material-ui/core/Button';
-import Icon from "@material-ui/core/Icon";
+import Button from '@mui/material/Button';
+import Icon from "@mui/material/Icon";
 
 export default function SubtemasPagina() {
     const { id_topic } = useParams();

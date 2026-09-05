@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 
 import "assets/css/material-dashboard-react.css?v=1.9.0";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from 'tss-react/mui';
 
 // components
 import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
@@ -24,16 +24,16 @@ import UsuariosPagina from "views/Usuarios/UsuariosPagina.js"
 import AltaUsuariosPagina from "views/Usuarios/AltaUsuariosPagina.js"
 
 import AuthRoute from "utils/AuthRoute.js";
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
 
 
 export default function App({ ...rest }) {
-    const useStyles = makeStyles(styles);
+    const useStyles = makeStyles()(styles);
 
     // styles
-    const classes = useStyles();
+    const { classes } = useStyles();
 
     const logout = (e) => {
         localStorage.removeItem("token");

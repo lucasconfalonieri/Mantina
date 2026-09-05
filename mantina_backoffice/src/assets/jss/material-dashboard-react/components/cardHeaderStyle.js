@@ -8,14 +8,14 @@ import {
   whiteColor
 } from "assets/jss/material-dashboard-react.js";
 
-const cardHeaderStyle = {
+const cardHeaderStyle = (theme, params, classes) => ({
   cardHeader: {
     padding: "0.75rem 1.25rem",
     marginBottom: "0",
     borderBottom: "none",
     background: "transparent",
     zIndex: "3 !important",
-    "&$cardHeaderPlain,&$cardHeaderIcon,&$cardHeaderStats,&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader": {
+    [`&.${classes.cardHeaderPlain}, &.${classes.cardHeaderIcon}, &.${classes.cardHeaderStats}, &.${classes.warningCardHeader}, &.${classes.successCardHeader}, &.${classes.dangerCardHeader}, &.${classes.infoCardHeader}, &.${classes.primaryCardHeader}, &.${classes.roseCardHeader}`]: {
       margin: "0 15px",
       padding: "0",
       position: "relative",
@@ -24,14 +24,14 @@ const cardHeaderStyle = {
     "&:first-child": {
       borderRadius: "calc(.25rem - 1px) calc(.25rem - 1px) 0 0"
     },
-    "&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader": {
-      "&:not($cardHeaderIcon)": {
+    [`&.${classes.warningCardHeader}, &.${classes.successCardHeader}, &.${classes.dangerCardHeader}, &.${classes.infoCardHeader}, &.${classes.primaryCardHeader}, &.${classes.roseCardHeader}`]: {
+      [`&:not(.${classes.cardHeaderIcon})`]: {
         borderRadius: "3px",
         marginTop: "-20px",
         padding: "15px"
       }
     },
-    "&$cardHeaderStats svg": {
+    [`&.${classes.cardHeaderStats} svg`]: {
       fontSize: "36px",
       lineHeight: "56px",
       textAlign: "center",
@@ -39,7 +39,7 @@ const cardHeaderStyle = {
       height: "36px",
       margin: "10px 10px 4px"
     },
-    "&$cardHeaderStats i,&$cardHeaderStats .material-icons": {
+    [`&.${classes.cardHeaderStats} i, &.${classes.cardHeaderStats} .material-icons`]: {
       fontSize: "36px",
       lineHeight: "56px",
       width: "56px",
@@ -48,7 +48,7 @@ const cardHeaderStyle = {
       overflow: "unset",
       marginBottom: "1px"
     },
-    "&$cardHeaderStats$cardHeaderIcon": {
+    [`&.${classes.cardHeaderStats}.${classes.cardHeaderIcon}`]: {
       textAlign: "right"
     }
   },
@@ -57,7 +57,7 @@ const cardHeaderStyle = {
     marginRight: "0px !important"
   },
   cardHeaderStats: {
-    "& $cardHeaderIcon": {
+    [`& .${classes.cardHeaderIcon}`]: {
       textAlign: "right"
     },
     "& h1,& h2,& h3,& h4,& h5,& h6": {
@@ -65,7 +65,7 @@ const cardHeaderStyle = {
     }
   },
   cardHeaderIcon: {
-    "&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader": {
+    [`&.${classes.warningCardHeader}, &.${classes.successCardHeader}, &.${classes.dangerCardHeader}, &.${classes.infoCardHeader}, &.${classes.primaryCardHeader}, &.${classes.roseCardHeader}`]: {
       background: "transparent",
       boxShadow: "none"
     },
@@ -85,40 +85,40 @@ const cardHeaderStyle = {
   },
   warningCardHeader: {
     color: whiteColor,
-    "&:not($cardHeaderIcon)": {
+    [`&:not(.${classes.cardHeaderIcon})`]: {
       ...warningCardHeader
     }
   },
   successCardHeader: {
     color: whiteColor,
-    "&:not($cardHeaderIcon)": {
+    [`&:not(.${classes.cardHeaderIcon})`]: {
       ...successCardHeader
     }
   },
   dangerCardHeader: {
     color: whiteColor,
-    "&:not($cardHeaderIcon)": {
+    [`&:not(.${classes.cardHeaderIcon})`]: {
       ...dangerCardHeader
     }
   },
   infoCardHeader: {
     color: whiteColor,
-    "&:not($cardHeaderIcon)": {
+    [`&:not(.${classes.cardHeaderIcon})`]: {
       ...infoCardHeader
     }
   },
   primaryCardHeader: {
     color: whiteColor,
-    "&:not($cardHeaderIcon)": {
+    [`&:not(.${classes.cardHeaderIcon})`]: {
       ...primaryCardHeader
     }
   },
   roseCardHeader: {
     color: whiteColor,
-    "&:not($cardHeaderIcon)": {
+    [`&:not(.${classes.cardHeaderIcon})`]: {
       ...roseCardHeader
     }
   }
-};
+});
 
 export default cardHeaderStyle;

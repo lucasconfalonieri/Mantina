@@ -1,18 +1,18 @@
 import React , { useEffect } from 'react';
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from 'tss-react/mui';
 
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
-import AddIcon from "@material-ui/icons/Add";
+import AddIcon from "@mui/icons-material/Add";
 
 import PropTypes from "prop-types";
 
-const useStyle = makeStyles(() => ({
+const useStyle = makeStyles()(() => ({
     addButton: {marginTop: '1.6em'}
 }));
 
 const AgregarContenidoAlumno = (props) => {
-  const style = useStyle();
+  const { classes: style } = useStyle();
   const { name_pdf,text_pdf ,id_studenttopic, id_studentcontent } = props;
 
   const handleClickOpen = (e) => {

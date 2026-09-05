@@ -1,19 +1,19 @@
 import React from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import { makeStyles } from 'tss-react/mui';
+import Container from '@mui/material/Container';
 import { postRegister } from '../../utils/api';
-import MuiAlert from '@material-ui/lab/Alert';
-import { TextField, InputAdornment, IconButton } from "@material-ui/core";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+import { TextField, InputAdornment, IconButton } from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Snackbar from '@mui/material/Snackbar';
 
 import { editUser } from '../../utils/api';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -33,9 +33,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export default function UsuariosPagina() {
   const { id_user } = useParams();
@@ -44,7 +44,7 @@ export default function UsuariosPagina() {
   const { state = {} } = useLocation();
   const { nameResponse, emailResponse } = state;
 
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const [email, setEmail] = React.useState(emailResponse);
   const [password, setPassword] = React.useState("");

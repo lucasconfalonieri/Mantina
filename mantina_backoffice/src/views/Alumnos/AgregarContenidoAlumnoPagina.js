@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+// @mui/material components
+import { makeStyles } from 'tss-react/mui';
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
@@ -11,13 +11,13 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
-import TextField from '@material-ui/core/TextField';
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import Input from "@material-ui/core/Input";
+import TextField from '@mui/material/TextField';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormGroup from '@mui/material/FormGroup';
+import Input from "@mui/material/Input";
 
 
 import { getUsersStudentContent, saveAllStudentContent, editStudentContentPdf, editStudentContentTextUsers, getUsersPrivilegesStudentContent } from '../../utils/api';
@@ -57,17 +57,17 @@ const styles = {
   addText: { color: 'black' }
 };
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles()(styles);
 
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export default function AgregarContenidoAlumnoPagina() {
 
   const { id_studenttopic, id_studentcontent, text_pdf } = useParams();
 
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const [usersDB, setUsers] = React.useState([]);
   const [usersSelectedPost, setUserSelected] = React.useState([]);

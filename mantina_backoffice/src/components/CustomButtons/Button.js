@@ -5,15 +5,15 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 
 // material-ui components
-import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+import { makeStyles } from 'tss-react/mui';
+import Button from "@mui/material/Button";
 
 import styles from "assets/jss/material-dashboard-react/components/buttonStyle.js";
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles()(styles);
 
 export default function RegularButton(props) {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const {
     color,
     round,

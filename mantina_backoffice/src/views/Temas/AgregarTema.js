@@ -1,21 +1,21 @@
 import React , { useEffect } from 'react';
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from 'tss-react/mui';
 
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
-import AddIcon from "@material-ui/icons/Add";
+import AddIcon from "@mui/icons-material/Add";
 import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
 
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Slide from '@material-ui/core/Slide';
-import TextField from '@material-ui/core/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
+import TextField from '@mui/material/TextField';
 import { saveTema, updateTema } from '../../utils/api';
 import PropTypes from "prop-types";
 
-const useTemaStyle = makeStyles(() => ({
+const useTemaStyle = makeStyles()(() => ({
     addButton: {marginTop: '1.6em'}
 }));
 
@@ -24,7 +24,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const AgregarTema = (props) => {
-    const temaStyle = useTemaStyle();
+    const { classes: temaStyle } = useTemaStyle();
     const [nombreTema, setNombreTema] = React.useState("");
     const [open, setOpen] = React.useState(false);
     const [title, setTitle] = React.useState("");

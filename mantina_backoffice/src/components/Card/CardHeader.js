@@ -3,17 +3,17 @@ import React from "react";
 import classNames from "classnames";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-// @material-ui/icons
+// @mui/material components
+import { makeStyles } from 'tss-react/mui';
+// @mui/icons-material
 
 // core components
 import styles from "assets/jss/material-dashboard-react/components/cardHeaderStyle.js";
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles()(styles);
 
 export default function CardHeader(props) {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { className, children, color, plain, stats, icon, ...rest } = props;
   const cardHeaderClasses = classNames({
     [classes.cardHeader]: true,

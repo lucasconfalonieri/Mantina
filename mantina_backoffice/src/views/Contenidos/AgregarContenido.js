@@ -1,23 +1,23 @@
 import React, { useEffect } from 'react';
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from 'tss-react/mui';
 
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
-import AddIcon from "@material-ui/icons/Add";
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Slide from '@material-ui/core/Slide';
-import TextField from '@material-ui/core/TextField';
-import Input from "@material-ui/core/Input";
+import AddIcon from "@mui/icons-material/Add";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
+import TextField from '@mui/material/TextField';
+import Input from "@mui/material/Input";
 import PropTypes from "prop-types";
-import LinearProgress from '@material-ui/core/LinearProgress';
+import LinearProgress from '@mui/material/LinearProgress';
 
 
 import { saveAllContent, editContentPdf, editContentText } from '../../utils/api';
 
-const useContenidoStyle = makeStyles(() => ({
+const useContenidoStyle = makeStyles()(() => ({
   addButton: { marginTop: '1.6em' },
   removeText: { color: 'transparent' },
   addText: { color: 'black' }
@@ -28,7 +28,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const AgregarContenido = (props) => {
-  const contenidoStyle = useContenidoStyle();
+  const { classes: contenidoStyle } = useContenidoStyle();
   const [open, setOpen] = React.useState(false);
   const [title, setTitle] = React.useState("");
   const { id_content_topic, name_pdf, text_pdf, id_topic } = props;

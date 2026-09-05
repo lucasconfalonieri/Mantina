@@ -1,9 +1,9 @@
 import React from "react";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
+// @mui/material components
+import { makeStyles } from 'tss-react/mui';
+import Grid from "@mui/material/Grid";
 
 const styles = {
   grid: {
@@ -11,13 +11,19 @@ const styles = {
   }
 };
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles()(styles);
 
 export default function GridItem(props) {
-  const classes = useStyles();
-  const { children, ...rest } = props;
+  const { classes } = useStyles();
+  const { children, xs, sm, md, lg, xl, ...rest } = props;
+  const size = {};
+  if (xs !== undefined) size.xs = xs;
+  if (sm !== undefined) size.sm = sm;
+  if (md !== undefined) size.md = md;
+  if (lg !== undefined) size.lg = lg;
+  if (xl !== undefined) size.xl = xl;
   return (
-    <Grid item {...rest} className={classes.grid}>
+    <Grid size={size} {...rest} className={classes.grid}>
       {children}
     </Grid>
   );

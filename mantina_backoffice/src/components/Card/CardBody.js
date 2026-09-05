@@ -3,17 +3,17 @@ import React from "react";
 import classNames from "classnames";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-// @material-ui/icons
+// @mui/material components
+import { makeStyles } from 'tss-react/mui';
+// @mui/icons-material
 
 // core components
 import styles from "assets/jss/material-dashboard-react/components/cardBodyStyle.js";
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles()(styles);
 
 export default function CardBody(props) {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { className, children, plain, profile, ...rest } = props;
   const cardBodyClasses = classNames({
     [classes.cardBody]: true,

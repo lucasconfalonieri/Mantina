@@ -1,53 +1,54 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import IconButton from '@material-ui/core/IconButton';
-import FirstPageIcon from '@material-ui/icons/FirstPage';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import LastPageIcon from '@material-ui/icons/LastPage';
-import Snackbar from '@material-ui/core/Snackbar';
+import { makeStyles } from 'tss-react/mui';
+import { useTheme } from '@mui/material/styles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableFooter from '@mui/material/TableFooter';
+import TablePagination from '@mui/material/TablePagination';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import IconButton from '@mui/material/IconButton';
+import FirstPageIcon from '@mui/icons-material/FirstPage';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import LastPageIcon from '@mui/icons-material/LastPage';
+import Snackbar from '@mui/material/Snackbar';
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 
-import NewIcon from "@material-ui/icons/PersonAdd";
-import Edit from "@material-ui/icons/Edit";
-import Remove from "@material-ui/icons/DeleteForever";
+import NewIcon from "@mui/icons-material/PersonAdd";
+import Edit from "@mui/icons-material/Edit";
+import Remove from "@mui/icons-material/DeleteForever";
 
-import MuiAlert from '@material-ui/lab/Alert';
+import MuiAlert from '@mui/material/Alert';
 
 import { deleteUser, getUsers } from '../../utils/api';
-import { Rotate90DegreesCcwSharp } from '@material-ui/icons';
+import { Rotate90DegreesCcwSharp } from '@mui/icons-material';
 
-const useStyles1 = makeStyles((theme) => ({
+const useStyles1 = makeStyles()((theme) => ({
   root: {
     flexShrink: 0,
     marginLeft: theme.spacing(2.5),
   },
 }));
 
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 
 //aca debe recibir el user id.
 function TablePaginationActions(props) {
 
-  const classes = useStyles1();
+  const { classes } = useStyles1();
   const theme = useTheme();
   const { count, page, rowsPerPage, onChangePage } = props;
 
@@ -104,14 +105,14 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-const useStyles2 = makeStyles({
+const useStyles2 = makeStyles()({
   table: {
     minWidth: 500,
   },
 });
 
 export default function CustomPaginationActionsTable() {
-  const classes = useStyles2();
+  const { classes } = useStyles2();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const emptyRows = 2;

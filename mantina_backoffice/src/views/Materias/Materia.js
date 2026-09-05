@@ -1,29 +1,29 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from 'tss-react/mui';
 
-import Icon from "@material-ui/core/Icon";
+import Icon from "@mui/material/Icon";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardIcon from "components/Card/CardIcon.js";
 import GridItem from "components/Grid/GridItem.js";
 import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 import AgregarMateria from 'views/Materias/AgregarMateria.js';
 import { deleteMateria } from '../../utils/api';
 import * as ServerErrorCode from '../../utils/ServerErrorCode.js';
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles()(styles);
 
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const Materia = ({ name, id_subject }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
     const [severityAlert, setSeverityAlert] = React.useState("");
     const [msgAlert, setMsgAlert] = React.useState("");
