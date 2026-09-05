@@ -69,7 +69,7 @@ const VisorPdf = ({ name, name_pdf }) => {
     return (
         <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.5.207/build/pdf.worker.min.js">
             <div style={{ height: '750px' }}>
-                <Viewer fileUrl= {process.env.REACT_APP_API_URL + "/public/pdfs/" + name_pdf}
+                <Viewer fileUrl= {import.meta.env.VITE_API_URL + "/public/pdfs/" + name_pdf}
                     layout={layout}
                     selectionMode={SelectionMode.Hand}
                 />

@@ -13,6 +13,7 @@ dist/
 build/
 coverage/
 .npmrc
+!mantina_backoffice/.npmrc
 
 # editor/OS
 .vscode/
