@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -9,27 +9,46 @@ import { getContenidosByStudentTopic, changeOrderStudentContent } from '../../ut
 import Button from "components/CustomButtons/Button.js";
 import List from 'react-smooth-draggable-list';
 
+function AlumnosContenido(props) {
+  const { id_studenttopic_selected } = props;
+  const [contenidosArray, setContenidosArray] = useState([]);
+  const [tema, setTema] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [order, setOrder] = useState([]);
 
-class AlumnosContenido extends Component {
-  constructor(props) {
-    super(props);
+  useEffect(() => {
+    let active = true;
 
-    this.state = {
-      id_studenttopic_selected: props.id_studenttopic_selected,
-      contenidosArray: [],
-      tema: "",
-      loading: true,
-      order: []
-    };
-  }
+    getContenidosByStudentTopic(id_studenttopic_selected)
+      .then(json => {
+        const contenidos = [];
+        const orden = [];
+        json.data.studentcontents.forEach(result => {
+          contenidos.push(result);
+          orden.push(result.order);
+        });
 
-  handleClickOrder = (e) => {
+        contenidos.push("agregar");
+
+        if (active) {
+          setOrder(orden);
+          setContenidosArray(contenidos);
+          setLoading(false);
+        }
+      })
+      .catch(error => {
+        // do something with the error (report it, etc.)
+      });
+
+    return () => { active = false; };
+  }, [id_studenttopic_selected]);
+
+  const handleClickOrder = (e) => {
     const auxContenidosArray = [];
-    this.state.contenidosArray.map(contenido => {
-      const { text_pdf,name_pdf, id_studentcontent, order } = contenido;
+    contenidosArray.map(contenido => {
       if (contenido != "agregar") {
-        contenido.order = this.state.order.indexOf(contenido.order);
-      auxContenidosArray.push(contenido);
+        contenido.order = order.indexOf(contenido.order);
+        auxContenidosArray.push(contenido);
       }
     });
     changeOrderStudentContent(JSON.stringify({"studentContents": auxContenidosArray }))
@@ -41,40 +60,12 @@ class AlumnosContenido extends Component {
             });
   };
 
-
-  componentDidMount() {
-    const id_selected = this.state.id_studenttopic_selected;
-    getContenidosByStudentTopic(id_selected)
-      .then(json => {
-        const contenidos = [];
-        const orden = [];
-        json.data.studentcontents.forEach(result => {
-          contenidos.push(result);
-          orden.push(result.order);
-        });
-
-        contenidos.push("agregar");
-        this.setState({order : orden})
-        return contenidos;
-      })
-      .then(allContenidos => {
-        this.setState({
-          contenidosArray: allContenidos,
-          loading: false
-        });
-      })
-      .catch(error => {
-        // do something with the error (report it, etc.)
-      });
-  }
-
-  renderContenidos = () => {
-    const { contenidosArray, id_studenttopic_selected } = this.state;
+  const renderContenidos = () => {
     return <List
       rowHeight={100}
       rowWidth={3000}
-      order={this.state.order}
-      onReOrder={order => this.setState({ order })}
+      order={order}
+      onReOrder={setOrder}
     >{
       contenidosArray.map(contenido => {
           const { text_pdf,name_pdf, id_studentcontent, order } = contenido;
@@ -102,38 +93,30 @@ class AlumnosContenido extends Component {
     </List>
   }
 
-
-
-
-  renderAgregar = () => {
+  const renderAgregar = () => {
     return (
     <div>
     <AgregarContenidoAlumnoView
-      id_studentcontent={this.props.id_studentcontent}
-      id_studenttopic={this.state.id_studenttopic_selected}
-      name_pdf={this.props.name_pdf}
-      text_pdf={this.props.text_pdf}
+      id_studentcontent={props.id_studentcontent}
+      id_studenttopic={id_studenttopic_selected}
+      name_pdf={props.name_pdf}
+      text_pdf={props.text_pdf}
     />
-      <Button color="danger" onClick={this.handleClickOrder}> Actualizar Orden </Button>
-     
+      <Button color="danger" onClick={handleClickOrder}> Actualizar Orden </Button>
+
     </div>
 
     )
   }
 
-  render() {
-    const { loading } = this.state;
-    const { tema } = this.state;
-
-    return (
-        <div>
-            <h2>Contenidos relacionados a {tema} </h2>
-            <GridContainer>
-              {loading ? 'Cargando los contenidos...' : this.renderAgregar()}
-              {loading ? '' : this.renderContenidos()}
-            </GridContainer>
-        </div>
-    );
-  }
+  return (
+    <div>
+      <h2>Contenidos relacionados a {tema} </h2>
+      <GridContainer>
+        {loading ? 'Cargando los contenidos...' : renderAgregar()}
+        {loading ? '' : renderContenidos()}
+      </GridContainer>
+    </div>
+  );
 }
 export default AlumnosContenido;

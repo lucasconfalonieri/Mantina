@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -8,23 +8,16 @@ import TemaAlumno from 'views/Alumnos/TemaAlumno.js';
 import { getTemasAlumnos, changeOrderStudentTopic} from '../../utils/api';
 import Button from "components/CustomButtons/Button.js";
 
-
 import List from 'react-smooth-draggable-list';
 
+function TemasAlumnos(props) {
+  const [temasArray, setTemasArray] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [order, setOrder] = useState([]);
 
+  useEffect(() => {
+    let active = true;
 
-class TemasAlumnos extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      temasArray: [],
-      loading: true,
-      order: []
-    };
-  }
-
-  componentDidMount() {
     getTemasAlumnos()
       .then(json => {
         const temas = [];
@@ -35,28 +28,26 @@ class TemasAlumnos extends Component {
         });
 
         temas.push("agregar");
-        this.setState({order : orden})
-        return temas;
-      })
-      .then(allTemas => {
-        this.setState({
-          temasArray: allTemas,
-          loading: false
-        });
+
+        if (active) {
+          setOrder(orden);
+          setTemasArray(temas);
+          setLoading(false);
+        }
       })
       .catch(error => {
         // do something with the error (report it, etc.)
       });
-  }
 
-  renderTemas = () => {
-    const { temasArray } = this.state;
+    return () => { active = false; };
+  }, []);
 
+  const renderTemas = () => {
     return <List
       rowHeight={100}
       rowWidth={3000}
-      order={this.state.order}
-      onReOrder={order => this.setState({ order })}
+      order={order}
+      onReOrder={setOrder}
     >{
         temasArray.map(tema => {
           const { name, id_studenttopics, order } = tema;
@@ -80,17 +71,14 @@ class TemasAlumnos extends Component {
       }
 
     </List>
-
-
   }
 
-  handleClickOrder = (e) => {
+  const handleClickOrder = (e) => {
     const auxTemasArray = [];
-    this.state.temasArray.map(tema => {
-      const { name, id_studenttopics, order } = tema;
+    temasArray.map(tema => {
       if (tema != "agregar") {
-      tema.order = this.state.order.indexOf(tema.order);
-      auxTemasArray.push(tema);
+        tema.order = order.indexOf(tema.order);
+        auxTemasArray.push(tema);
       }
     });
     changeOrderStudentTopic(JSON.stringify({"studentTopics": auxTemasArray }))
@@ -102,34 +90,26 @@ class TemasAlumnos extends Component {
             });
   };
 
-  renderAgregar = () => {
+  const renderAgregar = () => {
     return(
     <div >
       <AgregarTemaAlumnoView
-      name={this.props.name}
-      id_studenttopic={this.props.id_studenttopic}
+      name={props.name}
+      id_studenttopic={props.id_studenttopic}
     />
-      <Button color="danger" onClick={this.handleClickOrder}> Actualizar Orden </Button>
-     
+      <Button color="danger" onClick={handleClickOrder}> Actualizar Orden </Button>
+
     </div>
 
     )
   }
-  render() {
-    const { loading } = this.state;
 
-    return (
-
-      <GridContainer>
-       
-        {loading ? 'Cargando los temas...' : this.renderAgregar()}
-        {loading ? '' : this.renderTemas()}
-      </GridContainer>
-
-
-
-    );
-  }
+  return (
+    <GridContainer>
+      {loading ? 'Cargando los temas...' : renderAgregar()}
+      {loading ? '' : renderTemas()}
+    </GridContainer>
+  );
 }
 
 export default TemasAlumnos;
